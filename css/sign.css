@@ -85,6 +85,7 @@
   margin: 0;
   padding: 10px 15px;
   border-radius: 4px;
+  transition: .3s;
 }
 .main .login-card-body .item>.button>.btn-primary {
   color: #fff;
