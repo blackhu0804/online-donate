@@ -4,9 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/sign.css">
   <title>Document</title>
 </head>
 <body>
+  <div id="container">
+		<div class="header">
+			<div class="logo"><a href="index.html">微益捐</a></div>
+			<div class="login">
+				<div class="signIn"><a href="./sign_up.html">登录</a></div>
+        <div class="signUp"><a href="./sign_in.html">注册</a></div>
+			</div>
+		</div>
+  </div>
   
+  <div class="main">
+    <div class="login-card">
+      <div class="login-card-header">
+        <h1>申请重置密码</h1>
+        <div class="link">
+          <a href="./sign_in.html">登录</a>
+          <a href="./sign_up.html">注册</a>
+        </div>
+      </div>
+      <div class="login-card-body">
+        <form class="signin-form" action="">
+          <div class="item">
+            <label for="username">邮箱</label>
+            <input type="text" id="username">
+          </div>
+          <div class="item">
+            <div class="button">
+              <button type="submit" class="fo-btn btn-primary">发送重置邮件</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+		<p class="footer-desc">
+      <a href="/">关于我们</a>
+      |
+      <a href="/">加入我们</a>
+      |
+      <a href="/">联系我们</a>
+    </p>
+    <p>&copy;<script>document.write('2016-' + new Date().getFullYear())</script> 微益捐版权所有</p>
+	</div>
 </body>
 </html>
