@@ -27,22 +27,31 @@
         </div>
       </div>
       <div class="login-card-body">
-        <form class="signin-form" action="reginsert.php">
+        <form class="signin-form" action="reginsert.php" method="post">
           <div class="item">
             <label for="username">邮箱</label>
-            <input type="text" id="username">
+            <input type="text" id="username" name="username">
           </div>
           <div class="item">
             <label for="password">密码</label>
-            <input type="password" id="password">
+            <input type="password" id="password" name="password">
           </div>
           <div class="item">
             <label for="passwordSure">确认密码</label>
-            <input type="password" id="passwordSure">
+            <input type="password" id="passwordSure" name="passwordSure">
+          </div>
+          <div class="item">
+            <label>验证码</label>
+            <input type="text" name="authcode" value="">
+            <img id="captcha_img" border="1" src="./captcha.php?r=<?php echo rand();?>" width="150px" hight="40px" style="border-radius: 4px;border:none;margin-left:6em">
+              <a href="javascript:void(0)" onclick="document.getElementById('captcha_img').src='./captcha.php?r='+Math.random()">换一个？</a>
+          
+            
+            
           </div>
           <div class="item">
             <div class="button">
-              <input type="submit" class="fo-btn btn-primary">注册</input>
+              <button type="submit" class="fo-btn btn-primary">注册</button>
               <button type="button" class="fo-btn btn-default">取消</button>
             </div>
           </div>

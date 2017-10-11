@@ -12,9 +12,8 @@
 	$rst=mysql_query($sql);
 	$row=mysql_fetch_assoc($rst);
 	
-	print_r($rst);
-	print_r($row);
-	exit();
+	
+	
 	if($row){
 		$_SESSION['home_username']=$username;
 		$_SESSION['home_userid']=$row['id'];
