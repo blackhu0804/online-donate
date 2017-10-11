@@ -1,3 +1,7 @@
+<?php 
+  error_reporting(E_ALL||~E_NOTICE);
+  session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,27 +13,21 @@
   <link rel="stylesheet" href="./css/sign.css">
 </head>
 <body>
-  <div id="container">
-    <div class="header">
-      <div class="logo"><a href="index.html">微益捐</a></div>
-      <div class="login">
-        <div class="signIn"><a href="./sign_up.html">登录</a></div>
-        <div class="signUp"><a href="./sign_in.html">注册</a></div>
-      </div>
-    </div>
-  </div>
+  <?php
+      include "header.php";
+  ?>
 
   <div class="main">
     <div class="login-card">
       <div class="login-card-header">
-        <h1>登录</h1>
+        <h1>注册</h1>
         <div class="link">
-          <a href="./sign_up.html">注册</a>
-          <a href="./forgot_pwd.html">忘记密码</a>
+          <a href="./sign_in.html">登录</a>
+          <a href="#">忘记密码</a>
         </div>
       </div>
       <div class="login-card-body">
-        <form class="signin-form" action="">
+        <form class="signin-form" action="reginsert.php">
           <div class="item">
             <label for="username">邮箱</label>
             <input type="text" id="username">
@@ -39,8 +37,12 @@
             <input type="password" id="password">
           </div>
           <div class="item">
+            <label for="passwordSure">确认密码</label>
+            <input type="password" id="passwordSure">
+          </div>
+          <div class="item">
             <div class="button">
-              <button type="submit" class="fo-btn btn-primary">登录</button>
+              <input type="submit" class="fo-btn btn-primary">注册</input>
               <button type="button" class="fo-btn btn-default">取消</button>
             </div>
           </div>
@@ -49,15 +51,8 @@
     </div>
   </div>
 
-  <div class="footer">
-		<p class="footer-desc">
-      <a href="/">关于我们</a>
-      |
-      <a href="/">加入我们</a>
-      |
-      <a href="/">联系我们</a>
-    </p>
-    <p>&copy;<script>document.write('2016-' + new Date().getFullYear())</script> 微益捐版权所有</p>
-	</div>
+  <?php
+      include "footer.php";
+  ?>
 </body>
 </html>
