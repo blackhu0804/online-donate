@@ -18,8 +18,8 @@
       <div class="login-card-header">
         <h1>申请重置密码</h1>
         <div class="link">
-          <a href="./sign_in.html">登录</a>
-          <a href="./sign_up.html">注册</a>
+          <a href="./sign_in.php">登录</a>
+          <a href="./sign_up.php">注册</a>
         </div>
       </div>
       <div class="login-card-body">

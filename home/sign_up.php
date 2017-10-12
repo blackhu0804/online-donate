@@ -22,8 +22,8 @@
       <div class="login-card-header">
         <h1>注册</h1>
         <div class="link">
-          <a href="./sign_in.html">登录</a>
-          <a href="#">忘记密码</a>
+          <a href="./sign_in.php">登录</a>
+          <a href="./forgot_pwd.php">忘记密码</a>
         </div>
       </div>
       <div class="login-card-body">
