@@ -25,7 +25,7 @@
     else
     {
       $reply = "您输入的电子邮件地址不合法";
-      cho "<script>alert($reply)</script>";
+      echo "<script>alert($reply)</script>";
       echo "<script>location='sign_up.php'</script>";
       exit();
     }

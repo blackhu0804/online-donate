@@ -18,15 +18,15 @@
       <div class="login-card-header">
         <h1>申请重置密码</h1>
         <div class="link">
-          <a href="./sign_in.html">登录</a>
-          <a href="./sign_up.html">注册</a>
+          <a href="./sign_in.php">登录</a>
+          <a href="./sign_up.php">注册</a>
         </div>
       </div>
       <div class="login-card-body">
-        <form class="signin-form" action="">
+        <form class="signin-form" action="phpmail/aliyun.php" method="get">
           <div class="item">
             <label for="username">邮箱</label>
-            <input type="text" id="username">
+            <input type="text" id="username" name="toMail">
           </div>
           <div class="item">
             <div class="button">

@@ -91,3 +91,62 @@ a {
 .footer-desc a:hover {
   color: #20a0ff;
 }
+.main {
+  padding: 10px;
+}
+.main .container {
+  width: 1000px;
+  margin: 0 auto;
+}
+.slides{
+  position: relative;
+  height: 230px;
+  width: 534px;
+}
+.slides>li {
+  position: absolute;
+  display: none;
+}
+.slides>li>img{
+  height: 230px;
+}
+input[name=currentSlide]:nth-child(1):checked ~ .slides > li:nth-child(1),
+input[name=currentSlide]:nth-child(2):checked ~ .slides > li:nth-child(2),
+input[name=currentSlide]:nth-child(3):checked ~ .slides > li:nth-child(3){
+  display: block;
+  animation: slide 1s;
+}
+input[name=currentSlide]:nth-child(1):checked ~ .labels > li:nth-child(1) > label,
+input[name=currentSlide]:nth-child(2):checked ~ .labels > li:nth-child(2) > label,
+input[name=currentSlide]:nth-child(3):checked ~ .labels > li:nth-child(3) > label{
+  background-color: #20a0ff;
+  color: white;
+}
+input[name=currentSlide]{
+  display: none;
+}
+.labels {
+  display: flex;
+  width: 480px;
+  justify-content: center;
+}
+.labels label {
+  width: 20px;
+  height: 20px;
+  background-color: #ddd;
+  display: block;
+  border-radius: 50%;
+  text-align: center; 
+  line-height: 20px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+@keyframes slide{
+  from{
+    opacity: 0.5;
+  }
+  to{
+    opacity: 1;
+  }
+}
