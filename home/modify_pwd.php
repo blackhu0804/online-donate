@@ -13,10 +13,10 @@
       include "header.php";
   ?>
 
-  <div class="main">
+<div class="main">
     <div class="login-card">
       <div class="login-card-header">
-        <h1>申请重置密码</h1>
+        <h1>更改新密码</h1>
         <div class="link">
           <a href="./sign_in.php">登录</a>
           <a href="./sign_up.php">注册</a>
@@ -24,14 +24,21 @@
       </div>
       <div class="login-card-body">
         <form class="signin-form" action="phpmail/aliyun.php" method="get">
-          <div class="item">
-            <label for="username">邮箱</label>
-            <input type="text" id="username" name="toMail">
+					<div class="item">
+						<label for="identifyCode">邮箱验证码</label>
+						<input type="text" id="identifyCode" name="identifyCode">
+					</div>
+					<div class="item">
+            <label for="newPassword">新密码</label>
+            <input type="password" id="newPassword" name="newPassword">
+					</div>
+					<div class="item">
+            <label for="confirmPwd">第二次确认</label>
+            <input type="password" id="confirmPwd" name="confirmPwd">
           </div>
-
           <div class="item">
             <div class="button">
-              <button type="submit" class="fo-btn btn-primary" id="sendEmail">发送重置邮件</button>
+              <button type="submit" class="fo-btn btn-primary">提交</button>
             </div>
           </div>
         </form>

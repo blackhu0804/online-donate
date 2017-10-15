@@ -23,11 +23,7 @@
         <h1>注册</h1>
         <div class="link">
           <a href="./sign_in.php">登录</a>
-<<<<<<< HEAD
-          <a href="forgot_pwd">忘记密码</a>
-=======
           <a href="./forgot_pwd.php">忘记密码</a>
->>>>>>> bc35fa62e07a91c3d0a18c8d8e6fec136b8ce4aa
         </div>
       </div>
       <div class="login-card-body">
