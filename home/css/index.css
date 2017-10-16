@@ -161,55 +161,100 @@ span.menu {
   width: 1000px;
   margin: 0 auto;
 }
-.slides{
-  position: relative;
-  height: 230px;
-  width: 534px;
+.carousel {
+	width: 550px;
+	height: 300px;
+	float: left;
+	overflow: hidden;
+	position: relative;
 }
-.slides>li {
-  position: absolute;
-  display: none;
+.carousel .img-ct {
+	position: absolute;
+	overflow: hidden;
 }
-.slides>li>img{
-  height: 230px;
+.carousel .img-ct img{
+	position: relative;
+	width: 550px;
+	height: 300px;
 }
-input[name=currentSlide]:nth-child(1):checked ~ .slides > li:nth-child(1),
-input[name=currentSlide]:nth-child(2):checked ~ .slides > li:nth-child(2),
-input[name=currentSlide]:nth-child(3):checked ~ .slides > li:nth-child(3){
-  display: block;
-  animation: slide 1s;
+.carousel .img-ct>li {
+	float: left;
 }
-input[name=currentSlide]:nth-child(1):checked ~ .labels > li:nth-child(1) > label,
-input[name=currentSlide]:nth-child(2):checked ~ .labels > li:nth-child(2) > label,
-input[name=currentSlide]:nth-child(3):checked ~ .labels > li:nth-child(3) > label{
-  background-color: #20a0ff;
-  color: white;
+.carousel .arrow{
+	position: absolute;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 30px;
+	border: 2px solid #fff;
+	background-color: rgba(6, 6, 6, .4);
+	color: #fff;
+	top: 50%;
+	margin-top: -15px;
+	text-align: center;
 }
-input[name=currentSlide]{
-  display: none;
+.carousel .arrow:hover{
+	opacity: .8;
 }
-.labels {
-  display: flex;
-  width: 480px;
-  justify-content: center;
+.carousel .pre {
+	left: 10px;
 }
-.labels label {
-  width: 20px;
-  height: 20px;
-  background-color: #ddd;
-  display: block;
-  border-radius: 50%;
-  text-align: center; 
-  line-height: 20px;
-  margin: 5px;
-  cursor: pointer;
+.carousel .next{
+	right: 10px;
 }
-
-@keyframes slide{
-  from{
-    opacity: 0.5;
-  }
-  to{
-    opacity: 1;
-  }
+.carousel .bullet {
+	width: 100%;;
+	position: absolute;
+	bottom: 10px;
+	text-align: center;
+	font-size: 0;
+}
+.carousel .bullet li{
+	width: 10px;
+	height: 10px;
+	border: 1px solid #fff;
+	border-radius: 10px;
+	display: inline-block;
+	margin-left: 10px;
+	cursor: pointer;  
+}
+.carousel .bullet li.active{
+	background-color: #20a0ff;
+}
+.extra {
+	width: 320px;
+	height: 300px;
+	float: right;
+}
+.extra .moneyNum {
+	height: 300px;
+	padding: 50px 30px;
+	width: 320px;
+	font-family: "微软雅黑", "黑体";
+}
+.extra .moneyNum>h2{
+	font-size: 16px;
+	margin-bottom: 5px;
+	height: 36px;
+	line-height: 36px;
+}
+.extra .moneyNum>span {
+	background: url(http://mat1.gtimg.com/gongyi/index_inc2012/numbox_bg.png) no-repeat;
+	color: #20a0ff;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	height: 46px;
+	line-height: 46px;
+	margin-right: 10px;
+	padding-right: 14px;
+	text-align: right;
+	width: 210px;
+}
+.extra .moneyNum>p{
+	margin-top: 60px;
+	font-weight: bold;
+	text-align: center;
+	color: #20a0ff;
 }

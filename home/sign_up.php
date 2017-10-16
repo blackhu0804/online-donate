@@ -17,7 +17,7 @@
       include "header.php";
   ?>
 
-  <div class="main">
+  <div class="signUpMain">
     <div class="login-card">
       <div class="login-card-header">
         <h1>注册</h1>
@@ -43,11 +43,7 @@
           <div class="item">
             <label>验证码</label>
             <input type="text" name="authcode" value="">
-            <img id="captcha_img" border="1" src="./captcha.php?r=<?php echo rand();?>" width="150px" hight="40px" style="border-radius: 4px;border:none;margin-left:6em">
-              <a href="javascript:void(0)" onclick="document.getElementById('captcha_img').src='./captcha.php?r='+Math.random()">换一个？</a>
-          
-            
-            
+            <img onclick="document.getElementById('captcha_img').src='./captcha.php?r='+Math.random()" id="captcha_img" border="1" src="./captcha.php?r=<?php echo rand();?>" width="150px" hight="40px" style="border-radius: 4px;border:none;margin-left:6em;cursor: pointer;margin-top:5px;">          
           </div>
           <div class="item">
             <div class="button">

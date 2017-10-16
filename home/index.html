@@ -49,25 +49,32 @@
 			</div>
 		</div>
 
-	<div class="main" style="height:80vh;background:#eee;">
+	<div class="main" style="background:#eee;">
 		<div class="container">
-			<section class="carousel">
-				<input type="radio" name="currentSlide" id="slide1" checked>
-				<input type="radio" name="currentSlide" id="slide2">
-				<input type="radio" name="currentSlide" id="slide3">
-	
-				<ul class="slides">
-					<li> <img src="./img/img1.jpg" alt=""></li>
-					<li> <img src="./img/img2.jpg" alt=""></li>
-					<li> <img src="./img/img3.jpg" alt=""></li>
+			<div class="carousel">
+				<ul class="img-ct">
+					<li><a href="javascript:void(0)"><img src="./img/img1.jpg" alt=""></a></li>
+					<li><a href="javascript:void(0)"><img src="./img/img2.jpg" alt=""></a></li>
+					<li><a href="javascript:void(0)"><img src="./img/img3.jpg" alt=""></a></li>
 				</ul>
-		
-				<ul class="labels">
-					<li><label for="slide1">1</label></li>
-					<li><label for="slide2">2</label></li>
-					<li><label for="slide3">3</label></li>
+				<a class="pre arrow" href="#"><</a>
+				<a class="next arrow" href="#">></a>
+				<ul class="bullet">
+					<li class="active"></li>
+					<li></li>
+					<li></li>
 				</ul>
-			</section>
+			</div>
+
+			<div class="extra">
+				<div class="moneyNum">
+					<h2>历史善款总额：</h2>
+					<span id="donateMoney">3,047,916,510</span>元
+					<h2>历史爱心总人数</h2>
+					<span id="loveNum">46,880,930</span>人次
+					<p>微益捐与亿万网友在一起</p>
+				</div>
+			</div>
 		</div>
 	</div>
 
