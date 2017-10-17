@@ -47,7 +47,20 @@ a {
   color: #333;
 }
 html, body{
-  font-family: 'Roboto Slab', serif;
+	font-family: 'Roboto Slab',  microsoft yahei, Tahoma, hiragino sans gb, sans-serif;
+}
+/* 清除浮动 */
+.clearfix::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+/* iconfont初始化 */
+.icon {
+	width: 1em; height: 1em;
+	vertical-align: -0.15em;
+	fill: currentColor;
+	overflow: hidden;
 }
 /*--header start here--*/
 .header{
@@ -155,14 +168,15 @@ span.menu {
   color: #20a0ff;
 }
 .main {
-  padding: 10px;
+	padding: 10px;
+	padding-top: 30px;
 }
 .main .container {
   width: 1000px;
   margin: 0 auto;
 }
 .carousel {
-	width: 550px;
+	width: 630px;
 	height: 300px;
 	float: left;
 	overflow: hidden;
@@ -174,7 +188,7 @@ span.menu {
 }
 .carousel .img-ct img{
 	position: relative;
-	width: 550px;
+	width: 630px;
 	height: 300px;
 }
 .carousel .img-ct>li {
@@ -185,7 +199,7 @@ span.menu {
 	display: inline-block;
 	width: 30px;
 	height: 30px;
-	line-height: 30px;
+	line-height: 26px;
 	border-radius: 30px;
 	border: 2px solid #fff;
 	background-color: rgba(6, 6, 6, .4);
@@ -196,6 +210,7 @@ span.menu {
 }
 .carousel .arrow:hover{
 	opacity: .8;
+	text-decoration: none;
 }
 .carousel .pre {
 	left: 10px;
@@ -223,15 +238,23 @@ span.menu {
 	background-color: #20a0ff;
 }
 .extra {
+	background-image: url(../img/moneyNum.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position-x: center;
+	opacity: .8;
 	width: 320px;
 	height: 300px;
 	float: right;
+	box-sizing: border-box;
 }
 .extra .moneyNum {
 	height: 300px;
 	padding: 50px 30px;
 	width: 320px;
 	font-family: "微软雅黑", "黑体";
+	color: rgba(24, 23, 23, 0.856);
+	font-weight: bold;
 }
 .extra .moneyNum>h2{
 	font-size: 16px;
@@ -251,10 +274,88 @@ span.menu {
 	padding-right: 14px;
 	text-align: right;
 	width: 210px;
+	font-weight: normal;
+	opacity: .85;
 }
 .extra .moneyNum>p{
 	margin-top: 60px;
 	font-weight: bold;
 	text-align: center;
+	color: #fff;
+}
+.main-info {
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	padding: 0 15px;
+}
+.main-info .info-left {
+	width: 650px;
+	float: left;
+}
+.main-info .info-right {
+	width: 320px;
+	float: right;
+}
+.main-info .info-right .launch {
+	margin-bottom: 20px;
+	width: 100%;
+	float: left;
+	background-color: #fff;
+	display: flex;
+	justify-content: space-around;
+	padding: 6px 5px 20px;
+	border-bottom: 2px solid #ccc;
+}
+.info-right .launch>a{
+	padding: 5px 35px;
+	border: 1px solid #eee;
+	border-radius: 20px;
+	color: #46A651;
+	transition: .2s;
+}
+.info-right .launch>a:hover {
+	text-decoration: none;
+	background-color: #46A651;
+	color: #fa1c05;
+}
+.info-right .launch>a>.icon{
+	height: 50px;
+	width: 50px;
+}
+.info-right .flow {
+	padding: 10px;
+}
+.info-right .flow>h2 {
+	margin-bottom: 20px;
+}
+.info-right .flow>h2>.icon {
+ color: #46A651;
+}
+.info-right .flow>h2>span {
+	font-size: 16px;
+	margin-left: 3px;
+}
+.info-right .flow .flow-item {
+	font-size: 16px;
+	margin-bottom: 10px;
+	line-height: 28px;
+	background-color: #eee;
+	cursor: pointer;
+}
+.info-right .flow .flow-item:hover {
+	background-color: rgba(24, 148, 221, 0.55);
 	color: #20a0ff;
+}
+.info-right .flow-item>.icon {
+	width: 30px;
+	height: 25px;
+	vertical-align: middle;
+	opacity: .7;
+}
+.info-right .flow-item>b {
+	font-size: 12px;
+	margin-left: 20px;
+	color: #aaa;
 }
