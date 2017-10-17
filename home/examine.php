@@ -38,6 +38,14 @@
           <input type="text" id="phoneNumber" name="phoneNumber" placeholder="请填写您的常用手机号码">
         </div>
         <div class="item">
+          <label for="location">所在地</label>
+          <input type="text" id="location" name="location" placeholder="请填写您的详细地址">
+        </div>
+        <div class="item">
+          <label for="summary">简介</label>
+          <textarea name="summary" id="summary" cols="40" rows="4" placeholder="请填写您的详细地址"></textarea>
+        </div>
+        <div class="item">
           <div class="button">
             <button type="submit" class="fo-btn btn-primary">提交</button>
           </div>

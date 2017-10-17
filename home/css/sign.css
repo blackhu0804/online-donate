@@ -21,6 +21,18 @@
   color: #888888;
   font-size: 12px;
 }
+#summary {
+  width: 200px;
+  border-radius: 4px;
+  border: 1px solid rgb(191, 203, 217);
+  box-sizing: border-box;
+  color: rgb(31, 45, 61);
+  font-size: inherit;
+  line-height: 1;
+  outline: 0px;
+  padding: 3px 10px;
+  transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
 .login-card {
   width: 400px;
   border: 1px solid #d1dbe5;
