@@ -63,5 +63,5 @@ $(function(){
   })
   setInterval(function(){
     playNext(1)
-  },2500)
+  },3000)
 })
