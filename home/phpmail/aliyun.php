@@ -7,6 +7,8 @@ error_reporting(E_ALL^E_NOTICE^E_WARNING);
 
 include("class.phpmailer.php");
 include("class.smtp.php"); // ø…—°
+include '../public/commen/config.php';
+
 
 $toMail=$_GET['toMail'];
 $captch_code='';
@@ -16,6 +18,15 @@ for($i=0;$i<6;$i++)
 }
 $_SESSION['pwd_code']=$captch_code;
 $_SESSION['toMail']=$toMail;
+
+$sql="select * from user where email='{$email}'";
+$rst=mysql_query($sql);
+$row=mysql_fetch_assoc($rst);
+if(!($row)){
+	echo "<script>alert('∏√” œ‰Œ¥◊¢≤·£°')</script>";
+	echo "<script>location='../forgot_pwd.php'</script>";
+	exit();
+}
 
 $mail             = new PHPMailer();
 

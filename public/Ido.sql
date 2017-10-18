@@ -7,10 +7,10 @@ use Ido;
 create table user(
 	id int not null auto_increment primary key,
 	username varchar(50) not null,
-	emaile varchar(50) not null,
+	email varchar(50) not null,
 	password varchar(50) not null,
 	integration int,
-	isadmin tinyint not null
+	isadmin tinyint default 0
 );
 
 -- 2.giftClass项目
@@ -23,7 +23,7 @@ create table giftClass(
 	use_money int not null,
 	sum_money int,
 	start_time int not null,
-	end_time int not null,
+	time_num int not null,
 	isend tinyint not null
 );
 
