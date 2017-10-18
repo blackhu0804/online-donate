@@ -30,8 +30,8 @@
       <div class="login-card-body">
         <form class="signin-form" action="check.php" method="post">
           <div class="item">
-            <label for="username">邮箱</label>
-            <input type="text" id="username" name="username">
+            <label for="email">邮箱</label>
+            <input type="text" id="email" name="email">
           </div>
           <div class="item">
             <label for="password">密码</label>

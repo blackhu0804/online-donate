@@ -9,10 +9,10 @@
 	{
 		if($_POST['newPassword']==$_POST['confirmPwd'])
 		{
-			$sql="update user set password='{$newPwd}' where emaile='{$email}'";
+			$sql="update user set password='{$newPwd}' where email='{$email}'";
 
 			if(mysql_query($sql)){
-				echo '<script>location="index.html"</script>';
+				echo '<script>location="index.php"</script>';
 			}
 			else
 			{

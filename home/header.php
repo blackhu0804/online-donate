@@ -25,7 +25,7 @@
 			<div class="navg">
 				<ul class="res">
 					<li>
-						<a href="index.html">首页</a>
+						<a href="index.php">首页</a>
 					</li>
 					<li>
 						<a href="./sign_in.php">登陆</a>
