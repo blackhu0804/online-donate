@@ -24,7 +24,8 @@ create table giftClass(
 	sum_money int,
 	start_time int not null,
 	time_num int not null,
-	isend tinyint not null
+	isend tinyint default 0,
+	is_end tinyint default 0
 );
 
 -- 3.giftInfo用户善心表
@@ -62,4 +63,13 @@ create table certification(
 	myPhone varchar(100) not null,
 	user_id varchar(100) not null,
 	bank_ID varchar(100) not null
+);
+
+-- 7.advert 广告表
+
+create table advert(
+	id int not null auto_increment primary key,
+	img varchar(100) not null,
+	name varchar(100) not null,
+	url varchar(50) not null
 );
