@@ -1,6 +1,14 @@
 <?php
 	session_start();
+	include '../public/commen/config.php';
 	error_reporting(E_ALL^E_NOTICE^E_WARNING);
+	$sql="select * from sum_history where id=1";
+	$rst=mysql_query($sql);
+	$row=mysql_fetch_assoc($rst);
+
+	
+	
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,9 +82,16 @@
 		<div class="container clearfix">
 			<div class="carousel">
 				<ul class="img-ct">
-					<li><a href="javascript:void(0)"><img src="./img/img1.jpg" alt=""></a></li>
-					<li><a href="javascript:void(0)"><img src="./img/img2.jpg" alt=""></a></li>
-					<li><a href="javascript:void(0)"><img src="./img/img3.jpg" alt=""></a></li>
+					<?php
+						$sqlAdvert="select * from advert";
+						$rstAdvert=mysql_query($sqlAdvert);
+						while ($rowAdvert=mysql_fetch_assoc($rstAdvert)) {
+							
+					?>
+					<li><a href="javascript:void(0)"><img src="./img/<?php echo $rowAdvert['img']?>" alt="<?php echo $rowAdvert['name']?>"></a></li>
+					<?php
+						}
+					?>
 				</ul>
 				<a class="pre arrow" href="#"><</a>
 				<a class="next arrow" href="#">></a>
@@ -90,9 +105,9 @@
 			<div class="extra clearfix">
 				<div class="moneyNum">
 					<h2>历史善款总额：</h2>
-					<span id="donateMoney">3,047,916,510</span>元
+					<span id="donateMoney"><?php echo number_format($row['sum_money'])?></span>元
 					<h2>历史爱心总人数</h2>
-					<span id="loveNum">46,880,930</span>人次
+					<span id="loveNum"><?php echo number_format($row['sum_user'])?></span>人次
 					<p>微益捐与亿万网友在一起</p>
 				</div>
 			</div>
@@ -106,64 +121,31 @@
 				</div>
 
 				<ul class="list-content">
+					<?php
+						$sqlClass="select * from giftclass";
+						$rstClass=mysql_query($sqlClass);
+						while ($rowClass=mysql_fetch_assoc($rstClass)) {
+							
+					?>
 					<li class="list-item">
 						<a href="#">
-								<img src="http://imgcdn.gongyi.qq.com/gongyi/3e28f14aa0516842aa27fbbfc45ca6c1af217d327d09747992271ed4b24722b3e98ad00be53a4971/200" title="寻四百万份光明之爱" alt="寻四百万份光明之爱" class="item-img">
+								<img src="../public/uploads/<?php echo $rowClass['img']?>" title="<?php echo $rowClass['name'];?>" alt="<?php echo $rowClass['name'];?>" class="item-img">
 						</a>
-						<a class="item-header">寻四百万份光明之爱</a>
+						
+						<a class="item-header"><?php echo $rowClass['name'];?></a>
 						<div class="donate-info">
 							<p class="donate-content">
-									已筹：<span class="m_num">6296951</span>元
+									已筹：<span class="m_num"><?php echo $rowClass['sum_money'];?></span>元
 									<br>
-									捐款人数：<span>605453人</span>
+									捐款人数：<span><?php echo $rowClass['user_num'];?>人</span>
 							</p>
 							<a href="#">我要捐款</a>
 						</div>
 					</li>
-					<li class="list-item">
-						<a href="#">
-								<img src="http://imgcdn.gongyi.qq.com/gongyi/3e28f14aa0516842aa27fbbfc45ca6c1af217d327d09747992271ed4b24722b3e98ad00be53a4971/200" title="寻四百万份光明之爱" alt="寻四百万份光明之爱" class="item-img">
-						</a>
-						<a class="item-header">寻四百万份光明之爱</a>
-						<div class="donate-info">
-								<p class="donate-content">
-										已筹：<span class="m_num">6296951</span>元
-										<br>
-										捐款人数：<span>605453人</span>
-								</p>
-								<a href="#">我要捐款</a>
-							</div>
-					</li>
-				</ul>	
-				<ul class="list-content">
-						<li class="list-item">
-							<a href="#">
-									<img src="http://imgcdn.gongyi.qq.com/gongyi/3e28f14aa0516842aa27fbbfc45ca6c1af217d327d09747992271ed4b24722b3e98ad00be53a4971/200" title="寻四百万份光明之爱" alt="寻四百万份光明之爱" class="item-img">
-							</a>
-							<a class="item-header">寻四百万份光明之爱</a>
-							<div class="donate-info">
-								<p class="donate-content">
-										已筹：<span class="m_num">6296951</span>元
-										<br>
-										捐款人数：<span>605453人</span>
-								</p>
-								<a href="#">我要捐款</a>
-							</div>
-						</li>
-						<li class="list-item">
-							<a href="#">
-									<img src="http://imgcdn.gongyi.qq.com/gongyi/3e28f14aa0516842aa27fbbfc45ca6c1af217d327d09747992271ed4b24722b3e98ad00be53a4971/200" title="寻四百万份光明之爱" alt="寻四百万份光明之爱" class="item-img">
-							</a>
-							<a class="item-header">寻四百万份光明之爱</a>
-							<div class="donate-info">
-									<p class="donate-content">
-											已筹：<span class="m_num">6296951</span>元
-											<br>
-											捐款人数：<span>605453人</span>
-									</p>
-									<a href="#">我要捐款</a>
-								</div>
-						</li>
+					<?php 
+						}
+					?>
+					
 					</ul>
 			</div>
 			<div class="info-right clearfix">
