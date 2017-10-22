@@ -1,3 +1,8 @@
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
 .pro-top {
   width: 980px;
   margin-left: auto;
@@ -9,8 +14,11 @@
 .pro-top .top-title>a:hover {
   color: #20a0ff;
 }
-.pro-main {
-  width: 980px;
+.pro-top .top-title>span {
+  font-size: 22px;
+}
+.pro-main,.pro-body {
+  width: 860px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
@@ -41,6 +49,16 @@
 }
 .pro-main .pro-li {
   display: flex;
+}
+.pro-main .pro-info-pic {
+  width: 500px;
+  height: 280px;
+  border-right: 1px #dadada solid;
+  border-bottom: 1px #dadada solid;
+}
+.pro-main .pro-info-pic>img {
+  width: 100%;
+  height: 100%;
 }
 .pro-main>ul>li img {
   border: 1px #ececec solid;
@@ -87,4 +105,91 @@
   -webkit-transition: 0.5s all;
   -moz-transition: 0.5s all;
   -o-transition: 0.5s all;
+}
+.pro-main {
+  display: flex;
+}
+.pro-main .pro-info-detail {
+  margin-left: 50px;
+}
+.pro-main .detail-header>p{
+  font-size: 20px;
+  line-height: 50px;
+}
+.pro-main .detail-target>p{
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+}
+.pro-main .pro-info-detail .detail-target>p,.pro-main .pro-info-detail>p {
+  color: rgb(37, 167, 119);
+  font-size: 20px;
+}
+.pro-main .pro-info-detail>p {
+  line-height: 45px;
+  height: 45px;
+}
+.main_top_detail_target_time_value {
+  font-size: 14px;
+  color: #333;
+}
+.pro-info-button {
+  margin-top: 50px;
+  display: inline-block;
+}
+.pro-info-button>a{
+  border-radius: 5px;
+  padding: 10px 15px;
+  background-color: rgb(37, 167, 119);
+  color: #fff;
+  font-size: 16px;
+}
+.pro-info-button>a:hover,.pro-info-button>a:focus,.pro-info-button>a:active,.pro-info-button>a:visited {
+  color: #fff;
+  text-decoration: none;
+  background: rgba(37, 167, 119,.8);
+  padding: 10px 15px;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+}
+.donate-count {
+  margin-left: 20px;
+}
+.donate-count>b {
+  color: red;
+}
+.pro-body {
+  margin-bottom: 30px;
+}
+.pro-body>h3 {
+  height: 42px;
+  font-size: 18px;
+  line-height: 42px;
+  padding-left: 20px;
+  margin: -1px 0 0 -1px;
+  background-color: #eee;
+  border: 1px solid #e7e7e7;
+  border-left: 4px solid #83a90d;
+  border-radius: 5px;
+}
+.pro-body>h4 {
+  font-size: 20px;
+  background: url(../img/border-bottom.png) no-repeat left bottom;
+  padding-bottom: 14px;
+  margin-bottom: 17px;
+  padding-top: 40px;
+  line-height: 1;
+}
+.pro-body>p{
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+}
+.pro-body .pro-reason-body {
+  text-indent: 2em;
+}
+.footer {
+  background-color: #eee;
 }

@@ -35,7 +35,7 @@
 				<div class="banner-main">
 					<h1>WELCOME TO MY CHARITY</h1>
 					<div class="bwn">
-						<a href="#"> Donate now </a>
+						<a href="./project_list.php"> Donate now </a>
 					</div>
 				</div>
 			</div>
