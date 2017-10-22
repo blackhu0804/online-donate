@@ -9,7 +9,7 @@ create table user(
 	username varchar(50) not null,
 	email varchar(50) not null,
 	password varchar(50) not null,
-	integration int,
+	integration int default 0,
 	isadmin tinyint default 0
 );
 
@@ -61,6 +61,7 @@ create table certification(
 	name varchar(100) not null,
 	ID_card varchar(100) not null,
 	myPhone varchar(100) not null,
+	location varchar(100) not null,
 	user_id varchar(100) not null,
 	bank_ID varchar(100) not null
 );

@@ -21,15 +21,15 @@
       </div>
       <div class="launch-body">
         <h3 class="content-header">项目基本信息</h3>
-        <form action="">
+        <form action="check_launch_pro.php" method="post">
           <div class="item">
             <label for="proName">项目名称</label>
-            <input type="text" id="proName">
+            <input type="text" id="proName" name="proName">
             <span class="form_msg">( 不超过9个字，例如“为植物人撑起希望” )</span>
           </div>
           <div class="item">
             <label for="proMoney">筹款目标</label>
-            <input type="number" id="proMoney">元
+            <input type="number" id="proMoney" name="proMoney">元
           </div>
           <div class="item">
             <label for="proReason">筹款原因</label>

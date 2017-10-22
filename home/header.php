@@ -27,12 +27,28 @@
 					<li>
 						<a href="index.php">首页</a>
 					</li>
+					<?php
+						if($_SESSION['home_username']){
+					?>
+					<li>
+						<a href="#">欢迎 <?php echo $_SESSION['home_username']?> </a>
+				    </li>
+				    <li>
+						<a href="sign_out.php">退出</a>
+					</li>
+					<?php
+						}else{
+
+					?>
 					<li>
 						<a href="./sign_in.php">登陆</a>
 					</li>
 					<li>
 						<a href="./sign_up.php">注册</a>
 					</li>
+					<?php
+						}
+					?>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>

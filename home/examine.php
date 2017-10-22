@@ -1,3 +1,6 @@
+<?php
+  include 'lock.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,14 +23,14 @@
       <span class="examine-notice">请填写自己的准确信息，以便通过审核</span>
     </div>
     <div class="login-card-body">
-      <form class="signin-form" action="" method="post">
+      <form class="signin-form" action="check_examine.php" method="post">
         <div class="item">
-          <label for="username">姓名</label>
+          <label for="name">姓名</label>
           <input type="text" id="name" name="name" placeholder="请填写您的真实姓名">
         </div>
         <div class="item">
           <label for="idNumber">身份证号</label>
-          <input type="text" id="idNumber" name="idNumber" placeholder="请填写17位身份证号码">
+          <input type="text" id="idNumber" name="idNumber" placeholder="请填写18位身份证号码">
         </div>
         <div class="item">
           <label for="cardNumber">银行卡号</label>
@@ -40,10 +43,6 @@
         <div class="item">
           <label for="location">所在地</label>
           <input type="text" id="location" name="location" placeholder="请填写您的详细地址">
-        </div>
-        <div class="item">
-          <label for="summary">简介</label>
-          <textarea name="summary" id="summary" cols="40" rows="4" placeholder="请填写您的详细地址"></textarea>
         </div>
         <div class="item">
           <div class="button">
