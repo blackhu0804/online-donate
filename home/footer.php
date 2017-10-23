@@ -1,4 +1,4 @@
-<div class="footer">
+<div class="footer" >
 		<p class="footer-desc">
       <a href="/">关于我们</a>
       |
