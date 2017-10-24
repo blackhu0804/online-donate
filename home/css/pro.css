@@ -183,12 +183,16 @@
   line-height: 1;
 }
 .pro-body>p{
-  font-size: 16px;
+  font-size: 15px;
   color: #666;
-  line-height: 1.5;
+  line-height: 1.8;
 }
 .pro-body .pro-reason-body {
   text-indent: 2em;
+}
+.pro-body>img {
+  display: block;
+  margin-left: 40px;
 }
 .footer {
   background-color: #eee;
