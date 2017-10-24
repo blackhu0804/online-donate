@@ -11,8 +11,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 	<link rel="stylesheet" href="./css/index.css">
-	<script src="./js/js.js"></script>
-	<title>Document</title>
+	<title></title>
 </head>
 
 <body>
@@ -22,9 +21,6 @@
 				<a href="./index.php">
 					<img src="./img/logo.png" alt="" /> </a>
 			</div>
-			<span class="menu">
-				<img src="./img/icon.png" alt="" />
-			</span>
 			<div class="clear"> </div>
 			<div class="navg">
 				<ul class="res">

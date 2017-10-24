@@ -109,3 +109,12 @@
   border-color: #4db3ff;
   color: #fff;
 }
+.launch-body>form>.file>p {
+  color: #3d3d3d;
+  font-size: 16px;
+  line-height: 34px;
+  text-align: left;
+  vertical-align: top;
+  width: 100px;
+  display: inline-block;
+}

@@ -41,13 +41,12 @@
             <span class="form_msg">( 不超过100天 )</span>
           </div>
           <div class="file">
-            <input type="file" name='myfile[0]' vlaue="选择图片">
-            <input type="file" name='myfile[1]' vlaue="选择图片">
-            <input type="file" name='myfile[2]' vlaue="选择图片">
-            <input type="file" name='myfile[3]' vlaue="选择图片">
-            <input type="file" name='myfile[4]' vlaue="选择图片">
-            <div id="dd"></div>
-          
+            <p>上传图片</p>
+            <input type="file" name='myfile[0]' value="选择图片">
+            <input type="file" name='myfile[1]' value="选择图片">
+            <input type="file" name='myfile[2]' value="选择图片">
+            <input type="file" name='myfile[3]' value="选择图片">
+            <input type="file" name='myfile[4]' value="选择图片">
             <div class="button">
               <button type="submit" class="fo-btn btn-primary">提交</button>
             </div>
