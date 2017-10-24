@@ -17,17 +17,16 @@
 				<h1>后台登录</h1>
 			</header>
 			<div class="beg-login-main">
-				<form action="./index.html" class="layui-form" method="post">
+				<form action="./check_login.php" class="layui-form" method="post">
 					<div class="layui-form-item">
-						<input type="text" name="userName" placeholder="这里输入登录名" class="layui-input">
+						<input type="text" name="email" placeholder="这里输入登录邮箱" class="layui-input">
 					</div>
 					<div class="layui-form-item">
 						<input type="password" name="password"placeholder="这里输入密码" class="layui-input">
 					</div>
 					<div class="layui-form-item">
 						<div class="beg-pull-right">
-							<button class="layui-btn layui-btn-primary" lay-submit lay-filter="login">
-                登录
+							<button class="layui-btn layui-btn-primary" lay-submit lay-filter="login">登录
               </button>
 						</div>
 					</div>

@@ -66,7 +66,7 @@
     <h4 class="pro-title">项目名称</h4>
     <p class="pro-title-body"><?php echo $row['name'];?></p>
     <h4 class="pro-reason">项目概况</h4>
-    <p class="pro-reason-body">
+    
     <?php 
       $line=explode('。',$row['expl']);
       $img=explode(',', $row['img']);
@@ -80,23 +80,41 @@
           ?>
             <br>
             
-            <img src="../public/uploads/n_<?php $img=explode(',',$row['img']);echo $img[$i]?>" alt="<?php echo $row['name'];?>">
-            
-            <br>&nbsp;&nbsp;
+            <img  src="../public/uploads/n_<?php $img=explode(',',$row['img']);echo $img[$i]?>" alt="<?php echo $row['name'];?>">
+            <br>
+           
           <?php
           $i++;
+          if($j%5!=0)
+            echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
         }
-        if(($j+1)%5==0){
+
+        if($j%5==0){
           ?>
-            <br>&nbsp;&nbsp;
+          <p class="pro-reason-body">
+            
           <?php
         }
+        ?>
+        
+        <?php
+
         echo "{$line[$j]}。";
         $j++;
+        ?>
+        <?php
+          if($j%5==0){
+          ?>
+          </p>
+            
+          <?php
+        }
+        ?>
+        <?php
       }
     ?>
    
-    </p>
+   
   </div>
   <?php
       include "footer.php";
