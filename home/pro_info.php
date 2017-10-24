@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  include '../public/commen/config.php';
+  $class_id=$_GET['class_id'];
+  $sql="select * from giftClass where id='$class_id'";
+  $rst=mysql_query($sql);
+  $row=mysql_fetch_assoc($rst);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,43 +26,76 @@
       >
       <a href="./project_list.php">项目列表</a>
       >
-      <span>抗战老兵的生活晚年</span>
+      <span><?php echo $row['name'];?></span>
     </p>
   </div>
   <div class="pro-main clearfix">
     <div class="pro-info-pic">
-      <img src="./img/1.jpg" alt="">
+      <img src="../public/uploads/n_<?php $img=explode(',',$row['img']);echo $img[0]?>" alt="<?php echo $row['name'];?>">
     </div>
     <div class="pro-info-detail">
       <div class="detail-header">
-        <p>状态：募款中</p>
-      </div>
-      <div class="detail-target">
-        <p>目标：</p>
-        <span>15000</span>元
-        <br>
-        <p>已筹：</p>
-        <span>3000</span>元
-      </div>
-      <p class="main_top_detail_target_time"><span>时间：</span><span class="main_top_detail_target_time_value"> 2017-10-20 至 2018-01-20</span></p>
+        <?php if($row['is_end'])
+              {
+                echo "<p>状态：募款已结束</p>";
+              }else{
+        ?>
+
+                <p>状态：募款中</p>
+                </div>
+                <div class="detail-target">
+                  <p>目标：</p>
+                  <span><?php echo $row['use_money'];?></span>元
+                  <br>
+                  <p>已筹：</p>
+                  <span><?php echo $row['sum_money'];?></span>元
+                </div>
+      <?php
+             }
+      ?>
+      <p class="main_top_detail_target_time"><span>时间：</span><span class="main_top_detail_target_time_value"> <?php echo date('Y-m-d',$row['start_time']);?> 至 <?php echo date('Y-m-d',$row['time_num']);?></span></p>
       <div class="pro-info-button">
         <a href="javascript:void(0)">我要捐款</a>
       </div>
-      <span class="donate-count">捐款人数：<b>10 </b></span>人
+      <span class="donate-count">捐款人数：<b><?php echo $row['user_num'];?> </b></span>人
     </div>
   </div>
   
   <div class="pro-body">
     <h3>项目基本信息</h3>
     <h4 class="pro-title">项目名称</h4>
-    <p class="pro-title-body">抗战老兵的生活晚年</p>
+    <p class="pro-title-body"><?php echo $row['name'];?></p>
     <h4 class="pro-reason">项目概况</h4>
     <p class="pro-reason-body">
-    李计辰 老人今年94岁高龄了，老人年轻的时候参加战争去前线救治伤员，打正定战役、石家庄战役都参加过，还多次收到嘉奖，复员后在生产队工作，后来就一直种地为生。
-    老人没有结婚，现在岁数大了身体上的大病小病也多了，身边连个人照顾都没有。生活非常困难。老人现在快一百岁了，平时做饭洗衣都非常不方便了，平时邻居也会送些吃的喝的。
-    现在老人住的房子还是以前的土坯房非常破旧了，夏天漏雨非常严重，而且还有倒塌的危险，房子上的门窗都坏完了，现在就是用一块塑料布糊住，稍微能防一点风，一到冬天屋里和外面一个温度。   
-现在天气越来越冷了，老人还没有取暖设备，老人说他每年冬天就是靠在外面捡的一点木柴取暖过冬。
-老人生活真的是非常困难，希望能有人帮帮这位快百岁的老人。
+    <?php 
+      $line=explode('。',$row['expl']);
+      $img=explode(',', $row['img']);
+      $line_len=count($line);
+      $img_len=count($img)-1;
+      $mod=$line_len/$img_len;
+      $i=1;
+      $j=0;
+      foreach ($line as $k=>$lines){
+        if($j%$mod==0){
+          ?>
+            <br>
+            
+            <img src="../public/uploads/n_<?php $img=explode(',',$row['img']);echo $img[$i]?>" alt="<?php echo $row['name'];?>">
+            
+            <br>&nbsp;&nbsp;
+          <?php
+          $i++;
+        }
+        if(($j+1)%5==0){
+          ?>
+            <br>&nbsp;&nbsp;
+          <?php
+        }
+        echo "{$line[$j]}。";
+        $j++;
+      }
+    ?>
+   
     </p>
   </div>
   <?php

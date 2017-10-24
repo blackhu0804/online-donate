@@ -82,17 +82,20 @@
 						<h2>项目目录</h2>
 						<a href="#" class="more">More</a>
 				</div>
-
-				<ul class="list-content">
-					<?php
-						$sqlClass="select * from giftclass";
+				<?php
+						$sqlClass="select * from giftclass where isend=1";
 						$rstClass=mysql_query($sqlClass);
 						while ($rowClass=mysql_fetch_assoc($rstClass)) {
 							
+				?>
+				<ul class="list-content">
+					<?php
+						$i=0;
+						for(;$i<2;$i++){
 					?>
 					<li class="list-item">
-						<a href="#">
-								<img src="../public/uploads/<?php echo $rowClass['img']?>" title="<?php echo $rowClass['name'];?>" alt="<?php echo $rowClass['name'];?>" class="item-img">
+						<a href="pro_info.php?class_id=<?php echo $rowClass['id'];?>">
+								<img src="../public/uploads/s_<?php $img=explode(',',$rowClass['img']);echo $img[0]?>" title="<?php echo $rowClass['name'];?>" alt="<?php echo $rowClass['name'];?>" class="item-img">
 						</a>
 						
 						<a class="item-header"><?php echo $rowClass['name'];?></a>
@@ -104,16 +107,22 @@
 							</p>
 							<a href="#">我要捐款</a>
 						</div>
-					</li>
-					<?php 
+					</li>	
+					<?php
+							if($i==1||$rowClass=mysql_fetch_assoc($rstClass)){
+								
+							}
 						}
-					?>
-					
-					</ul>
+					?>		
+				</ul>
+				<?php
+						}
+				?>
+
 			</div>
 			<div class="info-right clearfix">
 				<div class="launch">
-					<a href="#" class="initiating-pro">
+					<a href="launch_pro.php" class="initiating-pro">
 						<svg class="icon" aria-hidden="true">
 							<use xlink:href="#icon-faqi"></use>
 						</svg>

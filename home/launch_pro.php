@@ -1,3 +1,15 @@
+<?php
+  include 'lock.php';
+  include '../public/commen/config.php';
+  $sqlExa="select * from certification where user_id={$_SESSION['home_userid']}";
+  $rstExa=mysql_query($sqlExa);
+  $rowExa=mysql_fetch_assoc($rstExa);
+ 
+  if(!$rowExa){
+    echo "<script>alert('请先完成个人信息认证！')</script>";
+    echo '<script>location="examine.php"</script>';
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

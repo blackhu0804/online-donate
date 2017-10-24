@@ -4,7 +4,7 @@
 	header("Content-type: text/html; charset=utf-8"); 
 	if(!$_SESSION['home_userid']){
 		echo "<script>alert('请先登录！')</script>";
-		echo "<script>location='index.php'</script>";
+		echo "<script>location='sign_in.php'</script>";
 		exit();
 	}
 ?>
