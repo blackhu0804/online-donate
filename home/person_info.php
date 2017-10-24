@@ -1,3 +1,10 @@
+<?php
+	include 'lock.php';
+	include '../public/commen/config.php';
+	$sql="select * from giftInfo where user_id={$_SESSION['home_userid']}";
+	$rst=mysql_query($sql);
+	$row=mysql_fetch_assoc($rst);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
