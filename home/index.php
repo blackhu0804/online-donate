@@ -23,7 +23,7 @@
 	<script src="./js/jquery-3.2.1.min.js"></script>
 	<script src="./js/js.js"></script>
 	<script src="//at.alicdn.com/t/font_443285_rdbiv6gatk68byb9.js"></script>
-	<title>Document</title>
+	<title>微益捐</title>
 </head>
 
 <body>

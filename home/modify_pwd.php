@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>修改密码</title>
   <link rel="stylesheet" href="./css/index.css">
   <link rel="stylesheet" href="./css/sign.css">
 </head>
