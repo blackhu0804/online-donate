@@ -434,3 +434,14 @@ span.menu {
 	margin-left: 20px;
 	color: #aaa;
 }
+.goTop {
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+	cursor: pointer;
+	display: none;
+	transition: .5s;
+}
+.active {
+	display: block;
+}
