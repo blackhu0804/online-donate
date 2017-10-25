@@ -3,7 +3,7 @@
 	include '../public/commen/config.php';
 	$sql="select * from giftInfo where user_id={$_SESSION['home_userid']}";
 	$rst=mysql_query($sql);
-	$row=mysql_fetch_assoc($rst);
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,61 +39,25 @@
 						<td>捐款金额(元)</td> 
 						<td>项目</td> 
 					</tr> 
+					<?php
+						while($row=mysql_fetch_assoc($rst)){
+
+						
+					?>
 					<tr> 
-						<td>2017/10/23</td> 
-						<td>10</td> 
-						<td>抗战老兵的生活晚年</td> 
+						<td><?php echo date('Y-m-d',$row['time']);?></td> 
+						<td><?php echo $row['money'];?></td> 
+						<td><?php
+							$sqlClass="select name from giftClass where id='{$row['giftClass_id']}'";
+							$rstClass=mysql_query($sqlClass);
+							$rowClass=mysql_fetch_assoc($rstClass);
+							echo $rowClass['name'];
+						?></td> 
 					</tr> 
-					<tr> 
-						<td>2017/10/23</td> 
-						<td>10</td> 
-						<td>抗战老兵的生活晚年</td> 
-					</tr> 
-					<tr> 
-						<td>2017/10/23</td> 
-						<td>10</td> 
-						<td>抗战老兵的生活晚年</td> 
-					</tr>
-					<tr> 
-						<td>2017/10/23</td> 
-						<td>10</td> 
-						<td>抗战老兵的生活晚年</td> 
-					</tr> 
-					<tr> 
-						<td>2017/10/23</td> 
-						<td>10</td> 
-						<td>抗战老兵的生活晚年</td> 
-					</tr>
-					<tr> 
-						<td>2017/10/23</td> 
-						<td>10</td> 
-						<td>抗战老兵的生活晚年</td> 
-					</tr> 
-					<tr> 
-						<td>2017/10/23</td> 
-						<td>10</td> 
-						<td>抗战老兵的生活晚年</td> 
-					</tr>
-					<tr>  
-						<td>2017/10/23</td> 
-						<td>10</td> 
-						<td>抗战老兵的生活晚年</td> 
-					</tr> 
-					<tr> 
-						<td>2017/10/23</td> 
-						<td>10</td> 
-						<td>抗战老兵的生活晚年</td> 
-					</tr> 
-					<tr> 
-						<td>2017/10/23</td> 
-						<td>10</td> 
-						<td>抗战老兵的生活晚年</td> 
-					</tr> 
-					<tr> 
-						<td>2017/10/23</td> 
-						<td>10</td> 
-						<td>抗战老兵的生活晚年</td> 
-					</tr> 
+					<?php
+						}
+					?>
+					
 					</table>
 				</li>
         <li>
@@ -105,48 +69,32 @@
 						<td>目标金额(元)</td> 
 						<td>状态</td> 
 					</tr> 
+					<?php
+						$sqlclass="select * from giftClass where user_id={$_SESSION['home_userid']}";
+						$rstclass=mysql_query($sqlclass);
+						while($rowclass=mysql_fetch_assoc($rstclass)){
+					?>
 					<tr>
-						<td>抗战老兵的生活晚年</td>
-						<td>30</td>
-						<td>10000</td>
-						<td>15000</td>
-						<td>募款中</td>
+						<td><?php echo $rowclass['name'];?></td>
+						<td><?php 
+						$time=time();
+						$days=ceil(($time-$rowclass['start_time'])/24/3600);
+						echo $days?></td>
+						<td><?php echo $rowclass['sum_money'];?></td>
+						<td><?php echo $rowclass['use_money'];?></td>
+						<?php
+							if($rowclass['is_end']){
+								echo "<td>已结束</td>";
+							}else{
+								echo "<td>募款中</td>";
+							}
+						?>
+						
 					</tr>
-					<tr>
-						<td>抗战老兵的生活晚年</td>
-						<td>30</td>
-						<td>10000</td>
-						<td>15000</td>
-						<td>募款中</td>
-					</tr>
-					<tr>
-						<td>抗战老兵的生活晚年</td>
-						<td>30</td>
-						<td>10000</td>
-						<td>15000</td>
-						<td>募款中</td>
-					</tr>
-					<tr>
-						<td>抗战老兵的生活晚年</td>
-						<td>30</td>
-						<td>10000</td>
-						<td>15000</td>
-						<td>募款中</td>
-					</tr>
-					<tr>
-						<td>抗战老兵的生活晚年</td>
-						<td>30</td>
-						<td>10000</td>
-						<td>15000</td>
-						<td>募款中</td>
-					</tr>
-					<tr>
-						<td>抗战老兵的生活晚年</td>
-						<td>30</td>
-						<td>10000</td>
-						<td>15000</td>
-						<td>募款中</td>
-					</tr>
+					<?php
+						}
+					?>
+					
 					</table>
 				</li>
     </ul>

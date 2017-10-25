@@ -44,6 +44,10 @@
             <input type="number" id="proMoney" name="proMoney">元
           </div>
           <div class="item">
+            <label for="summary">项目简介</label>
+            <textarea name="summary" id="summary" cols="30" rows="5" placeholder="20字左右"></textarea>
+          </div>
+          <div class="item">
             <label for="proReason">筹款原因</label>
             <textarea name="proReason" id="proReason" cols="30" rows="5" placeholder="请尽量详细，让捐款人了解你的情况"></textarea>
           </div>

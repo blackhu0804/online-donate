@@ -16,9 +16,11 @@ create table user(
 -- 2.giftClass项目
 create table giftClass(
 	id int not null auto_increment primary key,
+	user_id int not null,
 	name varchar(100) not null,
 	img varchar(1000) not null,
 	expl text not null,
+	summary text not null,
 	user_num int default 0,
 	use_money int not null,
 	sum_money int default 0,
@@ -50,8 +52,8 @@ create table giftMarch(
 -- 5.sum_history历史表
 create table sum_history(
 	id int not null auto_increment primary key,
-	sum_money int,
-	sum_user int
+	sum_money int default 0,
+	sum_user int default 0
 );
 
 -- 6.certification实名认证表
