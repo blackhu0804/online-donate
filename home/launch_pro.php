@@ -41,7 +41,7 @@
           </div>
           <div class="item">
             <label for="proMoney">筹款目标</label>
-            <input type="number" id="proMoney" name="proMoney">元
+            <input type="number" min="0" id="proMoney" name="proMoney">元
           </div>
           <div class="item">
             <label for="summary">项目简介</label>

@@ -127,7 +127,7 @@
         <p>项目名称：</p><span>一张团圆的车票</span>
         <form action="check_pro_info.php?class_id=<?php echo $class_id;?>" method="post">
           <label for="moneyNum">捐款金额：</label>
-          <input type="number" id="moneyNum" name="moneyNum">元  
+          <input type="number" min="0" id="moneyNum" name="moneyNum">元  
           <br>
           <button type="submit" class="sub-btn">捐助</button>
         </form>  
