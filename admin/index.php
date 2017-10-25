@@ -1,5 +1,5 @@
 <?php
-	//include 'lock.php';
+	include 'lock.php';
 ?>
 <!doctype html>
 <html lang="ch">
