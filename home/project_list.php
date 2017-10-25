@@ -1,3 +1,7 @@
+<?php
+  session_start();
+  include '../public/commen/config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,300 +30,51 @@
 
   <div class="pro-main">
     <ul class="pro-ul">
+      <?php
+            $sqlClass="select * from giftClass";
+            $rstClass=mysql_query($sqlClass);
+            while($rowClass=mysql_fetch_assoc($rstClass)){
+
+          ?>
       <li class="pro-li">
         <div class="pro-li-img">
-          <a href="./pro_info.php"><img src="./img/1.jpg" alt=""></a>
+          <a href="./pro_info.php?class_id=<?php echo $rowClass['id'];?>"><img src="../public/uploads/s_<?php $img=explode(',',$rowClass['img']);echo $img[0]?>" alt="<?php echo $rowClass['name'];?>"></a>
         </div>
         <div class="pro-li-info">
-          <a href="./pro_info.php"><h3>抗战老兵的贫困晚年</h3></a>
+          <a href="./pro_info.php"><h3><?php echo $rowClass['name'];?></h3></a>
           <span>项目简介：</span>
-          <b>老人年轻时去前线救治伤员，正定战役、石家庄战役都参加过</b>
+          <b><?php echo $rowClass['summary'];?></b>
           <br>
           <span>筹款目标：</span>
-          <b>15000</b>元
+          <b><?php echo $rowClass['use_money'];?></b>元
           <br>
           <span>筹款时间：</span>
-          <b>2017-10-20 至 2018-01-20</b>
+          <b><?php echo date('Y-m-d',$rowClass['start_time']);?> 至 <?php echo date('Y-m-d',$rowClass['time_num']);?></b>
         </div>
         <div class="pro-li-donate">
-          <p class="pro-state">项目状态：募款中</p>
-          <p class="pro-donate-state">已筹：<span>2106.1</span>元&nbsp;&nbsp;<span>77</span>人捐款</p>
-          <a href="./pro_info.php" class="donate-btn">我要捐款</a>
+          
+          <?php if($rowClass['is_end'])
+              {
+                echo "<p class='pro-state'>状态：募款已结束</p>";
+              }else{
+        ?>
+
+                <p class="pro-state">项目状态：募款中</p>
+                <p class="pro-donate-state">已筹：<span><?php echo $rowClass['use_money'];?></span>元&nbsp;&nbsp;<span><?php echo $rowClass['user_num'];?></span>人捐款</p>
+              
+                 <a href="./pro_info.php?class_id=<?php echo $rowClass['id'];?>" class="donate-btn">我要捐款</a>
+                
+      <?php
+             }
+      ?>
+         
+         
         </div>
       </li>
-      <li class="pro-li">
-        <div class="pro-li-img">
-          <a href="./pro_info.php"><img src="./img/1.jpg" alt=""></a>
-        </div>
-        <div class="pro-li-info">
-          <a href="./pro_info.php"><h3>抗战老兵的贫困晚年</h3></a>
-          <span>项目简介：</span>
-          <b>老人年轻时去前线救治伤员，正定战役、石家庄战役都参加过</b>
-          <br>
-          <span>筹款目标：</span>
-          <b>15000</b>元
-          <br>
-          <span>筹款时间：</span>
-          <b>2017-10-20 至 2018-01-20</b>
-        </div>
-        <div class="pro-li-donate">
-          <p class="pro-state">项目状态：募款中</p>
-          <p class="pro-donate-state">已筹：<span>2106.1</span>元&nbsp;&nbsp;<span>77</span>人捐款</p>
-          <a href="./pro_info.php" class="donate-btn">我要捐款</a>
-        </div>
-      </li>
-      <li class="pro-li">
-        <div class="pro-li-img">
-          <a href="./pro_info.php"><img src="./img/1.jpg" alt=""></a>
-        </div>
-        <div class="pro-li-info">
-          <a href="./pro_info.php"><h3>抗战老兵的贫困晚年</h3></a>
-          <span>项目简介：</span>
-          <b>老人年轻时去前线救治伤员，正定战役、石家庄战役都参加过</b>
-          <br>
-          <span>筹款目标：</span>
-          <b>15000</b>元
-          <br>
-          <span>筹款时间：</span>
-          <b>2017-10-20 至 2018-01-20</b>
-        </div>
-        <div class="pro-li-donate">
-          <p class="pro-state">项目状态：募款中</p>
-          <p class="pro-donate-state">已筹：<span>2106.1</span>元&nbsp;&nbsp;<span>77</span>人捐款</p>
-          <a href="./pro_info.php" class="donate-btn">我要捐款</a>
-        </div>
-      </li>
-      <li class="pro-li">
-        <div class="pro-li-img">
-          <a href="./pro_info.php"><img src="./img/1.jpg" alt=""></a>
-        </div>
-        <div class="pro-li-info">
-          <a href="./pro_info.php"><h3>抗战老兵的贫困晚年</h3></a>
-          <span>项目简介：</span>
-          <b>老人年轻时去前线救治伤员，正定战役、石家庄战役都参加过</b>
-          <br>
-          <span>筹款目标：</span>
-          <b>15000</b>元
-          <br>
-          <span>筹款时间：</span>
-          <b>2017-10-20 至 2018-01-20</b>
-        </div>
-        <div class="pro-li-donate">
-          <p class="pro-state">项目状态：募款中</p>
-          <p class="pro-donate-state">已筹：<span>2106.1</span>元&nbsp;&nbsp;<span>77</span>人捐款</p>
-          <a href="./pro_info.php" class="donate-btn">我要捐款</a>
-        </div>
-      </li>
-      <li class="pro-li">
-        <div class="pro-li-img">
-          <a href="./pro_info.php"><img src="./img/1.jpg" alt=""></a>
-        </div>
-        <div class="pro-li-info">
-          <a href="./pro_info.php"><h3>抗战老兵的贫困晚年</h3></a>
-          <span>项目简介：</span>
-          <b>老人年轻时去前线救治伤员，正定战役、石家庄战役都参加过</b>
-          <br>
-          <span>筹款目标：</span>
-          <b>15000</b>元
-          <br>
-          <span>筹款时间：</span>
-          <b>2017-10-20 至 2018-01-20</b>
-        </div>
-        <div class="pro-li-donate">
-          <p class="pro-state">项目状态：募款中</p>
-          <p class="pro-donate-state">已筹：<span>2106.1</span>元&nbsp;&nbsp;<span>77</span>人捐款</p>
-          <a href="./pro_info.php" class="donate-btn">我要捐款</a>
-        </div>
-      </li>
-      <li class="pro-li">
-        <div class="pro-li-img">
-          <a href="#"><img src="./img/1.jpg" alt=""></a>
-        </div>
-        <div class="pro-li-info">
-          <a href="./pro_info.php"><h3>抗战老兵的贫困晚年</h3></a>
-          <span>项目简介：</span>
-          <b>老人年轻时去前线救治伤员，正定战役、石家庄战役都参加过</b>
-          <br>
-          <span>筹款目标：</span>
-          <b>15000</b>元
-          <br>
-          <span>筹款时间：</span>
-          <b>2017-10-20 至 2018-01-20</b>
-        </div>
-        <div class="pro-li-donate">
-          <p class="pro-state">项目状态：募款中</p>
-          <p class="pro-donate-state">已筹：<span>2106.1</span>元&nbsp;&nbsp;<span>77</span>人捐款</p>
-          <a href="#" class="donate-btn">我要捐款</a>
-        </div>
-      </li>
-      <li class="pro-li">
-        <div class="pro-li-img">
-          <a href="#"><img src="./img/1.jpg" alt=""></a>
-        </div>
-        <div class="pro-li-info">
-          <a href="#"><h3>抗战老兵的贫困晚年</h3></a>
-          <span>项目简介：</span>
-          <b>老人年轻时去前线救治伤员，正定战役、石家庄战役都参加过</b>
-          <br>
-          <span>筹款目标：</span>
-          <b>15000</b>元
-          <br>
-          <span>筹款时间：</span>
-          <b>2017-10-20 至 2018-01-20</b>
-        </div>
-        <div class="pro-li-donate">
-          <p class="pro-state">项目状态：募款中</p>
-          <p class="pro-donate-state">已筹：<span>2106.1</span>元&nbsp;&nbsp;<span>77</span>人捐款</p>
-          <a href="#" class="donate-btn">我要捐款</a>
-        </div>
-      </li>
-      <li class="pro-li">
-        <div class="pro-li-img">
-          <a href="#"><img src="./img/1.jpg" alt=""></a>
-        </div>
-        <div class="pro-li-info">
-          <a href="#"><h3>抗战老兵的贫困晚年</h3></a>
-          <span>项目简介：</span>
-          <b>老人年轻时去前线救治伤员，正定战役、石家庄战役都参加过</b>
-          <br>
-          <span>筹款目标：</span>
-          <b>15000</b>元
-          <br>
-          <span>筹款时间：</span>
-          <b>2017-10-20 至 2018-01-20</b>
-        </div>
-        <div class="pro-li-donate">
-          <p class="pro-state">项目状态：募款中</p>
-          <p class="pro-donate-state">已筹：<span>2106.1</span>元&nbsp;&nbsp;<span>77</span>人捐款</p>
-          <a href="#" class="donate-btn">我要捐款</a>
-        </div>
-      </li>
-      <li class="pro-li">
-        <div class="pro-li-img">
-          <a href="#"><img src="./img/1.jpg" alt=""></a>
-        </div>
-        <div class="pro-li-info">
-          <a href="#"><h3>抗战老兵的贫困晚年</h3></a>
-          <span>项目简介：</span>
-          <b>老人年轻时去前线救治伤员，正定战役、石家庄战役都参加过</b>
-          <br>
-          <span>筹款目标：</span>
-          <b>15000</b>元
-          <br>
-          <span>筹款时间：</span>
-          <b>2017-10-20 至 2018-01-20</b>
-        </div>
-        <div class="pro-li-donate">
-          <p class="pro-state">项目状态：募款中</p>
-          <p class="pro-donate-state">已筹：<span>2106.1</span>元&nbsp;&nbsp;<span>77</span>人捐款</p>
-          <a href="#" class="donate-btn">我要捐款</a>
-        </div>
-      </li>
-      <li class="pro-li">
-        <div class="pro-li-img">
-          <a href="#"><img src="./img/1.jpg" alt=""></a>
-        </div>
-        <div class="pro-li-info">
-          <a href="#"><h3>抗战老兵的贫困晚年</h3></a>
-          <span>项目简介：</span>
-          <b>老人年轻时去前线救治伤员，正定战役、石家庄战役都参加过</b>
-          <br>
-          <span>筹款目标：</span>
-          <b>15000</b>元
-          <br>
-          <span>筹款时间：</span>
-          <b>2017-10-20 至 2018-01-20</b>
-        </div>
-        <div class="pro-li-donate">
-          <p class="pro-state">项目状态：募款中</p>
-          <p class="pro-donate-state">已筹：<span>2106.1</span>元&nbsp;&nbsp;<span>77</span>人捐款</p>
-          <a href="#" class="donate-btn">我要捐款</a>
-        </div>
-      </li>
-      <li class="pro-li">
-        <div class="pro-li-img">
-          <a href="#"><img src="./img/1.jpg" alt=""></a>
-        </div>
-        <div class="pro-li-info">
-          <a href="#"><h3>抗战老兵的贫困晚年</h3></a>
-          <span>项目简介：</span>
-          <b>老人年轻时去前线救治伤员，正定战役、石家庄战役都参加过</b>
-          <br>
-          <span>筹款目标：</span>
-          <b>15000</b>元
-          <br>
-          <span>筹款时间：</span>
-          <b>2017-10-20 至 2018-01-20</b>
-        </div>
-        <div class="pro-li-donate">
-          <p class="pro-state">项目状态：募款中</p>
-          <p class="pro-donate-state">已筹：<span>2106.1</span>元&nbsp;&nbsp;<span>77</span>人捐款</p>
-          <a href="#" class="donate-btn">我要捐款</a>
-        </div>
-      </li>
-      <li class="pro-li">
-        <div class="pro-li-img">
-          <a href="#"><img src="./img/1.jpg" alt=""></a>
-        </div>
-        <div class="pro-li-info">
-          <a href="#"><h3>抗战老兵的贫困晚年</h3></a>
-          <span>项目简介：</span>
-          <b>老人年轻时去前线救治伤员，正定战役、石家庄战役都参加过</b>
-          <br>
-          <span>筹款目标：</span>
-          <b>15000</b>元
-          <br>
-          <span>筹款时间：</span>
-          <b>2017-10-20 至 2018-01-20</b>
-        </div>
-        <div class="pro-li-donate">
-          <p class="pro-state">项目状态：募款中</p>
-          <p class="pro-donate-state">已筹：<span>2106.1</span>元&nbsp;&nbsp;<span>77</span>人捐款</p>
-          <a href="#" class="donate-btn">我要捐款</a>
-        </div>
-      </li>
-      <li class="pro-li">
-        <div class="pro-li-img">
-          <a href="#"><img src="./img/1.jpg" alt=""></a>
-        </div>
-        <div class="pro-li-info">
-          <a href="#"><h3>抗战老兵的贫困晚年</h3></a>
-          <span>项目简介：</span>
-          <b>老人年轻时去前线救治伤员，正定战役、石家庄战役都参加过</b>
-          <br>
-          <span>筹款目标：</span>
-          <b>15000</b>元
-          <br>
-          <span>筹款时间：</span>
-          <b>2017-10-20 至 2018-01-20</b>
-        </div>
-        <div class="pro-li-donate">
-          <p class="pro-state">项目状态：募款中</p>
-          <p class="pro-donate-state">已筹：<span>2106.1</span>元&nbsp;&nbsp;<span>77</span>人捐款</p>
-          <a href="#" class="donate-btn">我要捐款</a>
-        </div>
-      </li>
-      <li class="pro-li">
-        <div class="pro-li-img">
-          <a href="#"><img src="./img/1.jpg" alt=""></a>
-        </div>
-        <div class="pro-li-info">
-          <a href="#"><h3>抗战老兵的贫困晚年</h3></a>
-          <span>项目简介：</span>
-          <b>老人年轻时去前线救治伤员，正定战役、石家庄战役都参加过</b>
-          <br>
-          <span>筹款目标：</span>
-          <b>15000</b>元
-          <br>
-          <span>筹款时间：</span>
-          <b>2017-10-20 至 2018-01-20</b>
-        </div>
-        <div class="pro-li-donate">
-          <p class="pro-state">项目状态：募款中</p>
-          <p class="pro-donate-state">已筹：<span>2106.1</span>元&nbsp;&nbsp;<span>77</span>人捐款</p>
-          <a href="#" class="donate-btn">我要捐款</a>
-        </div>
-      </li>
+      <?php
+          }
+      ?>
+      <
     </ul>
   </div>
   

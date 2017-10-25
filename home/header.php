@@ -31,7 +31,7 @@
 						if($_SESSION['home_username']){
 					?>
 					<li>
-						<a href="#">欢迎 <?php echo $_SESSION['home_username']?> </a>
+						<a href="person_info.php">欢迎 <?php echo $_SESSION['home_username']?> </a>
 				    </li>
 				    <li>
 						<a href="sign_out.php">退出</a>

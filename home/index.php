@@ -80,18 +80,28 @@
 			<div class="info-left">
 				<div class="info-header">
 						<h2>项目目录</h2>
-						<a href="#" class="more">More</a>
+						<a href="project_list.php" class="more">More</a>
 				</div>
 				<?php
-						$sqlClass="select * from giftclass where isend=1";
+						$sqlClass="select * from giftclass where isend=1 and is_end=0";
 						$rstClass=mysql_query($sqlClass);
+						$time=time();
 						while ($rowClass=mysql_fetch_assoc($rstClass)) {
+								
 							
 				?>
 				<ul class="list-content">
 					<?php
 						$i=0;
 						for(;$i<2;$i++){
+							while($time>$rowClass['time_num']&&$rowClass['id']){
+									$sqlclass="update giftClass set is_end=1 where id={$rowClass['id']}";
+									mysql_query($sqlclass);
+									$rowClass=mysql_fetch_assoc($rstClass);
+								}
+							if(!$rowClass['id']){
+								break;
+							}
 					?>
 					<li class="list-item">
 						<a href="pro_info.php?class_id=<?php echo $rowClass['id'];?>">
@@ -105,13 +115,11 @@
 									<br>
 									捐款人数：<span><?php echo $rowClass['user_num'];?>人</span>
 							</p>
-							<a href="#">我要捐款</a>
+							<a href="pro_info.php?class_id=<?php echo $rowClass['id'];?> ">我要捐款</a>
 						</div>
 					</li>	
 					<?php
-							if($i==1||$rowClass=mysql_fetch_assoc($rstClass)){
-								
-							}
+							if($i==1||$rowClass=mysql_fetch_assoc($rstClass));
 						}
 					?>		
 				</ul>
@@ -128,7 +136,7 @@
 						</svg>
 						<p>发起项目</p>
 					</a>
-					<a href="#" class="donate-money">
+					<a href="project_list.php" class="donate-money">
 						<svg class="icon" aria-hidden="true">
 							<use xlink:href="#icon-donate-copy"></use>
 						</svg>
