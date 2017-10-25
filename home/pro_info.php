@@ -55,7 +55,7 @@
       ?>
       <p class="main_top_detail_target_time"><span>时间：</span><span class="main_top_detail_target_time_value"> <?php echo date('Y-m-d',$row['start_time']);?> 至 <?php echo date('Y-m-d',$row['time_num']);?></span></p>
       <div class="pro-info-button">
-        <a href="javascript:void(0)">我要捐款</a>
+        <a href="javascript:void(0)" class="donate">我要捐款</a>
       </div>
       <span class="donate-count">捐款人数：<b><?php echo $row['user_num'];?> </b></span>人
     </div>
@@ -116,8 +116,42 @@
    
    
   </div>
+
+  <div class="place-order-wrapper">
+    <div class="place-order">
+      <div class="order-header">
+        <h1>捐款提交</h1>
+        <a href="#" class="close">X</a>
+      </div>
+      <div class="order-body">
+        <p>项目名称：</p><span>一张团圆的车票</span>
+        <form action="">
+          <label for="moneyNum">捐款金额：</label>
+          <input type="number" id="moneyNum">元  
+          <br>
+          <button type="submit" class="sub-btn">捐助</button>
+        </form>  
+      </div>
+    </div>
+  </div>
   <?php
       include "footer.php";
   ?>
+
+  <script>
+    var btn = document.querySelector('.donate');
+    var placeOrder = document.querySelector('.place-order-wrapper');
+    var close = document.querySelector('.close');
+
+    btn.addEventListener('click', function(e){
+      e.preventDefault(); 
+      placeOrder.classList.add('open');
+    }) 
+
+    close.addEventListener('click',function(e) {
+      e.preventDefault(); 
+      placeOrder.classList.remove('open');
+    })
+  </script>
 </body>
 </html>
