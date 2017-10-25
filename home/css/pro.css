@@ -108,6 +108,7 @@
 }
 .pro-main {
   display: flex;
+  min-height: 65vh;
 }
 .pro-main .pro-info-detail {
   margin-left: 50px;

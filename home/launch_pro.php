@@ -41,7 +41,7 @@
           </div>
           <div class="item">
             <label for="proMoney">筹款目标</label>
-            <input type="number" min="0" id="proMoney" name="proMoney">元
+            <input type="number" min="0" max="1000000" id="proMoney" name="proMoney">元
           </div>
           <div class="item">
             <label for="summary">项目简介</label>
@@ -53,7 +53,7 @@
           </div>
           <div class="item">
             <label for="proDays">计划天数</label>
-            <input type="number" id="proDays" name="proDays">天
+            <input type="number" min="1" max="100" id="proDays" name="proDays">天
             <span class="form_msg">( 不超过100天 )</span>
           </div>
           <div class="file">

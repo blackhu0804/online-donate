@@ -15,6 +15,7 @@
 	$proDays=$_POST['proDays'];
 	$time_num=$proDays*3600*24+$time;
 	$user_id=$_SESSION['home_userid'];
+	$summary=$_POST['summary'];
 
 	
 
@@ -44,11 +45,14 @@
 	}
 	$str=substr($str,1);
 
-	$sql="insert into giftClass(name,img,expl,use_money,start_time,time_num,user_id) value('$proName','$str','$proReason','$proMoney','$time','$time_num','$user_id')";
-	if(mysql_query($sql)){
+	$sql="insert into giftClass(name,img,expl,use_money,start_time,time_num,user_id,summary) value('$proName','$str','$proReason','$proMoney','$time','$time_num','$user_id','$summary')";
+		$rst=mysql_query($sql);
+	
+		if($rst){
 		echo "<script>alert('提交成功，请等待审核！')</script>";
 		echo '<script>location="index.php"</script>';
 	}else{
+		
 		echo "<script>alert('提交未成功，请重新填写！')</script>";
 		echo '<script>location="launch_pro.php"</script>';
 

@@ -41,7 +41,7 @@
           <a href="./pro_info.php?class_id=<?php echo $rowClass['id'];?>"><img src="../public/uploads/s_<?php $img=explode(',',$rowClass['img']);echo $img[0]?>" alt="<?php echo $rowClass['name'];?>"></a>
         </div>
         <div class="pro-li-info">
-          <a href="./pro_info.php"><h3><?php echo $rowClass['name'];?></h3></a>
+          <a href="./pro_info.php?class_id=<?php echo $rowClass['id'];?>"><h3><?php echo $rowClass['name'];?></h3></a>
           <span>项目简介：</span>
           <b><?php echo $rowClass['summary'];?></b>
           <br>
@@ -74,7 +74,6 @@
       <?php
           }
       ?>
-      <
     </ul>
   </div>
   
