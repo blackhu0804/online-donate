@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  color: #333;
+}
+.wrapper {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+.wrapper .header h1{
+  height: 50px;
+  font-size: 24px;
+  line-height: 50px;
+  padding-left: 20px;
+  margin: -1px 0 0 -1px;
+  background-color: #eee;
+  border: 1px solid #e7e7e7;
+  border-left: 4px solid #83a90d;
+  border-radius: 5px;
+}
+.wrapper .body {
+  display: flex;
+  margin-bottom: 20px;
+}
+.wrapper .body h2 {
+  font-size: 18px;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 15px;
+  background: url(../images/border-bottom.png) no-repeat left bottom;
+}
+.wrapper .body .pro-body>p {
+  text-indent: 2em;
+  margin-bottom: 4px;
+}
+.wrapper .pro-body .pro-reason {
+  line-height: 1.5;
+}
+.wrapper .pro-body {
+  flex: 5;
+  padding-right: 30px;
+}
+.wrapper .person-body {
+  flex: 3;
+}
+.wrapper .person-body h4 {
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+}
+.wrapper .person-body p {
+  text-indent: 3em;
+  font-size: 15px;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+}
+.footer>a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  margin-left: 10px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #99c412;
+  transition: .3s;
+}
+.footer>a:hover {
+  background-color: rgba(153, 196, 18, 0.84);;
+}
