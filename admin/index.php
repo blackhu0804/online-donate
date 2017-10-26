@@ -30,7 +30,7 @@
 			});
 
 			$(".btn").click(function () {
-				console.log($(this).attr("uid"));
+				$('.uid').append($(this).attr("uid"));
 			})
 		})
 	</script>
@@ -338,9 +338,10 @@
 				</div>
 				<!-- /.modal -->
 
-				<!--修改权限弹出窗口-->
+				<!--修改图片弹出窗口-->
 				<div class="modal fade" id="changeChar" role="dialog" aria-labelledby="gridSystemModalLabel">
 					<div class="modal-dialog" role="document">
+					
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -351,6 +352,7 @@
 							<div class="modal-body">
 								<div class="container-fluid">
 									<form class="form-horizontal">
+										<input style="display:none;" class="uid"></input>
 										<div class="form-group ">
 										<label for="sName" class="col-xs-3 control-label">上传图片：</label>
 											<div class="col-xs-6 ">
