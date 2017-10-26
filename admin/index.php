@@ -1,5 +1,5 @@
 <?php
-	include 'lock.php';
+	// include 'lock.php';
 ?>
 <!doctype html>
 <html lang="ch">
@@ -28,6 +28,10 @@
 				attrObj = attrObj.replace("_grey.png", ".png");
 				$(this).find("img").attr("src", attrObj);
 			});
+
+			$(".btn").click(function () {
+				console.log($(this).attr("uid"));
+			})
 		})
 	</script>
 	<!--[if lt IE 9]>
@@ -277,7 +281,7 @@
 								<img width="100" src="../home/img/img1.jpg" alt="">
 							</div>
 							<div class="col-xs-6">
-								<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeChar">修改</button>
+								<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeChar" uid="111">修改</button>
 								<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteChar">删除</button>
 							</div>
 						</div>
@@ -286,7 +290,7 @@
 								<img width="100" src="../home/img/img2.jpg" alt="">
 							</div>
 							<div class="col-xs-6">
-								<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeChar">修改</button>
+								<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeChar" uid="222">修改</button>
 								<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteChar">删除</button>
 							</div>
 						</div>
@@ -295,7 +299,7 @@
 								<img width="100" src="../home/img/img3.jpg" alt="">
 							</div>
 							<div class="col-xs-6">
-								<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeChar">修改</button>
+								<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeChar" uid="333">修改</button>
 								<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteChar">删除</button>
 							</div>
 						</div>
