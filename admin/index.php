@@ -1,5 +1,8 @@
 <?php
 	// include 'lock.php';
+	include '../public/commen/config.php';
+	$sql="select * from advert";
+	$rst=mysql_query($sql);
 ?>
 <!doctype html>
 <html lang="ch">
@@ -30,7 +33,7 @@
 			});
 
 			$(".btn").click(function () {
-				$('.uid').append($(this).attr("uid"));
+				$('.uid').attr("value",$(this).attr("uid"));
 			})
 		})
 	</script>
@@ -276,15 +279,23 @@
 						</div>
 					</div>
 					<div class="tablebody">
+						<?php
+							while($row=mysql_fetch_assoc($rst)){
+
+							
+						?>
 						<div class="row">
 							<div class="col-xs-6">
-								<img width="100" src="../home/img/img1.jpg" alt="">
+								<img width="100" src="../public/uploads/<?php echo $row['img'];?>" alt="">
 							</div>
 							<div class="col-xs-6">
-								<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeChar" uid="111">修改</button>
-								<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteChar">删除</button>
+								<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeChar" uid="<?php echo $row['id'];?>">修改</button>
+								<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteChar" drop_id="<?php echo $row['id'];?>">删除</button>
 							</div>
 						</div>
+						<?php
+							}
+						?>
 						<div class="row">
 							<div class="col-xs-6">
 								<img width="100" src="../home/img/img2.jpg" alt="">
@@ -351,14 +362,22 @@
 							</div>
 							<div class="modal-body">
 								<div class="container-fluid">
-									<form class="form-horizontal" action="check_change_img.php" method="post">
-										<input style="display:none;" name="data-uid" value="htuid" class="uid"></input>
+									<form class="form-horizontal" action="check_change_img.php" method="post" enctype="multipart/form-data">
+										<input style="display:none;" name="data-uid" value="uid" class="uid"></input>
 										<div class="form-group ">
 										<label for="sName" class="col-xs-3 control-label">上传图片：</label>
 											<div class="col-xs-6 ">
-												<input type="file" id="sImg" name="img" placeholder="">
+												<input type="file" name="img">
+												
 											</div>
+
 										</div>
+											<div class="col-xs-6 ">
+											<input type="text" name="url" placeholder="URL">
+											</div>
+											<div class="col-xs-6 ">
+											<input type="text" name="name" placeholder="标题">
+											</div>
 									
 								</div>
 							</div>
@@ -384,15 +403,18 @@
 								</button>
 								<h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
 							</div>
+							<form action="delete_img.php" method="post">
+								<input style="display:none;" name="data-uid" value="uid" class="uid"></input>
 							<div class="modal-body">
 								<div class="container-fluid">
-									确定要删除该图片？删除后不可恢复！
+									确定要删除该图片及所包含信息？删除后不可恢复！
 								</div>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-								<button type="button" class="btn btn-xs btn-danger">保 存</button>
+								<button type="button" class="btn btn-xs btn-danger">删除</button>
 							</div>
+						</form>
 						</div>
 						<!-- /.modal-content -->
 					</div>
