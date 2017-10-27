@@ -351,21 +351,22 @@
 							</div>
 							<div class="modal-body">
 								<div class="container-fluid">
-									<form class="form-horizontal">
-										<input style="display:none;" class="uid"></input>
+									<form class="form-horizontal" action="check_change_img.php" method="post">
+										<input style="display:none;" name="data-uid" value="htuid" class="uid"></input>
 										<div class="form-group ">
 										<label for="sName" class="col-xs-3 control-label">上传图片：</label>
 											<div class="col-xs-6 ">
-												<input type="file" id="sImg" placeholder="">
+												<input type="file" id="sImg" name="img" placeholder="">
 											</div>
 										</div>
-									</form>
+									
 								</div>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-								<button type="button" class="btn btn-xs btn-green">保 存</button>
+								<button type="submit" class="btn btn-xs btn-green">保 存</button>
 							</div>
+							</form>
 						</div>
 						<!-- /.modal-content -->
 					</div>
