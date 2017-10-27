@@ -49,7 +49,7 @@
           <b><?php echo $rowClass['use_money'];?></b>元
           <br>
           <span>筹款时间：</span>
-          <b><?php echo date('Y-m-d',$rowClass['start_time']);?> 至 <?php echo date('Y-m-d',$rowClass['time_num']);?></b>
+          <b><?php echo date('Y-m-d',$rowClass['start_time']);?> 至 <?php echo date('Y-m-d',$rowClass['end_time']);?></b>
         </div>
         <div class="pro-li-donate">
           

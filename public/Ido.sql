@@ -24,7 +24,8 @@ create table giftClass(
 	user_num int default 0,
 	use_money int not null,
 	sum_money int default 0,
-	start_time int not null,
+	start_time int,
+	end_time int,
 	time_num int not null,
 	isend tinyint default 0,
 	is_end tinyint default 0

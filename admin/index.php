@@ -92,16 +92,28 @@
 							<td>操作</td>
 						</tr>
 						<tbody>
+							<?php
+								$sqlClass="select id,name,use_money,time_num from giftclass where isend=0";
+								$rstClass=mysql_query($sqlClass);
+								$i=1;
+								while($rowClass=mysql_fetch_assoc($rstClass))
+								{
+							?>
 							<tr>
-								<td>1</td>
-								<td>测试题目1</td>
-								<td>10000</td>
-								<td>30</td>
+								<td><?php echo $i;?></td>
+								<td><?php echo $rowClass['name'];?></td>
+								<td><?php echo $rowClass['use_money'];?></td>
+								<td><?php echo $rowClass['time_num'];?></td>
 								<td>
+									<form action="Audit_project.php?class_id=<?php echo $rowClass['id'];?>">
 									<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
 									<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
+								</form>
 								</td>
 							</tr>
+							<?php
+								}
+							?>
 							<tr>
 								<td>1</td>
 								<td>测试题目1</td>

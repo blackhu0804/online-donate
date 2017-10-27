@@ -53,7 +53,7 @@
       <?php
              }
       ?>
-      <p class="main_top_detail_target_time"><span>时间：</span><span class="main_top_detail_target_time_value"> <?php echo date('Y-m-d',$row['start_time']);?> 至 <?php echo date('Y-m-d',$row['time_num']);?></span></p>
+      <p class="main_top_detail_target_time"><span>时间：</span><span class="main_top_detail_target_time_value"> <?php echo date('Y-m-d',$row['start_time']);?> 至 <?php echo date('Y-m-d',$row['end_time']);?></span></p>
       <div class="pro-info-button">
         <a href="javascript:void(0)" class="donate">我要捐款</a>
       </div>
