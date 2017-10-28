@@ -6,23 +6,22 @@
 
 	$basedir = dirname(__FILE__);
 	$lbasedir= dirname($basedir);
-	print_r($lbasedir);
-	print_r($img);
+
 	$src=$_FILES['img']['tmp_name'];
 	$fname=$_FILES['img']['name'];
 
 	$ext=explode('.', $fname);
-	print_r($ext);
+
 	$ext=array_pop($ext);
-	print_r($ext);
-	print_r($src);
+
 	
 	$dst=$lbasedir.'/public/uploads/'.time().mt_rand().'.'.$ext;
 	if(move_uploaded_file($src,$dst)){
 
 		$img=basename($dst);
 
-		$sql="insert into advert(name,img,url) value('$name','$img','$url')";
+		$sql="update advert set name='{$name}',url='{$url}',img='{$img}' where id={$uid}";
+
 		if(mysql_query($sql)){
 			echo '<script>location="index.php"</script>';
 		}else{

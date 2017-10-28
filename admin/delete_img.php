@@ -2,7 +2,7 @@
 	include '../lock.php';
 	include '../../public/commen/config.php';
 
-	$id=$_POST['data-uid'];
+	$id=$_POST['data-drop_id'];
 	$sql="select img from advert where id={$id}";
 	$rst=mysql_query($sql);
 	$row=mysql_fetch_assoc($rst);

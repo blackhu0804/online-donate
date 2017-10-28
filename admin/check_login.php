@@ -9,9 +9,9 @@
 	$sql="select * from user where email='{$email}' and password='{$password}' and isadmin=1";
 	$rst=mysql_query($sql);
 	$row=mysql_fetch_assoc($rst);
-	
+
 	if($row){
-		$_SESSION['admin_username']=$username;
+		$_SESSION['admin_username']=$row['username'];
 		$_SESSION['admin_userid']=$row['id'];
 
 		echo "<script>location='index.php'</script>";

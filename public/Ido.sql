@@ -27,6 +27,7 @@ create table giftClass(
 	start_time int,
 	end_time int,
 	time_num int not null,
+	feedback text,
 	isend tinyint default 0,
 	is_end tinyint default 0
 );

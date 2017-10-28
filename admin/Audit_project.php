@@ -1,4 +1,5 @@
 <?php
+  include 'lock.php';
   include '../public/commen/config.php';
   $id=$_GET['class_id'];
   $sql="select * from giftclass where id={$id}";
@@ -104,7 +105,7 @@
       </div>
     </div>
     <div class="footer">
-      <a href="agree.php?class_id=<?php echo $row['id'];?>">通过审核</a>
+      <a href="agree.php?class_id=<?php echo $row['id'];?>&&time_num=<?php echo $row['time_num'];?>">通过审核</a>
       <a href="disagree.php?class_id=<?php echo $row['id'];?>">拒绝审核</a>
     </div>
   </div>

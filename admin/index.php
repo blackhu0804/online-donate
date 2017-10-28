@@ -1,5 +1,5 @@
 <?php
-	// include 'lock.php';
+	 include 'lock.php';
 	include '../public/commen/config.php';
 	$sql="select * from advert";
 	$rst=mysql_query($sql);
@@ -34,6 +34,7 @@
 
 			$(".btn").click(function () {
 				$('.uid').attr("value",$(this).attr("uid"));
+				$('.drop_id').attr("value",$(this).attr("drop_id"));
 			})
 		})
 	</script>
@@ -89,11 +90,12 @@
 							<td>项目名称</td>
 							<td>筹款目标（元）</td>
 							<td>筹款时间（天）</td>
+							<td>项目状态</td>
 							<td>操作</td>
 						</tr>
 						<tbody>
 							<?php
-								$sqlClass="select id,name,use_money,time_num from giftclass where isend=0";
+								$sqlClass="select id,name,use_money,time_num,isend from giftclass where isend!=1";
 								$rstClass=mysql_query($sqlClass);
 								$i=1;
 								while($rowClass=mysql_fetch_assoc($rstClass))
@@ -104,11 +106,23 @@
 								<td><?php echo $rowClass['name'];?></td>
 								<td><?php echo $rowClass['use_money'];?></td>
 								<td><?php echo $rowClass['time_num'];?></td>
+								<?php 
+									if($rowClass['isend']==0){
+										echo "<td>待审核</td>";
+									}else{
+
+										echo "<td>未通过</td>";
+									}
+								?>
 								<td>
+							>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>把按钮改成提交功能，让修改与删除按钮在一行上
 									<form action="Audit_project.php?class_id=<?php echo $rowClass['id'];?>">
-									<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
-									<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
-								</form>
+										<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>	
+									</form>
+									<form action="delete_project.php?class_id=<?php echo $rowClass['id'];?>">
+										<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
+									</form>
+								<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 								</td>
 							</tr>
 							<?php
@@ -415,18 +429,23 @@
 								</button>
 								<h4 class="modal-title" id="gridSystemModalLabel">提示</h4>
 							</div>
-							<form action="delete_img.php" method="post">
-								<input style="display:none;" name="data-uid" value="uid" class="uid"></input>
+						
+							
+								
 							<div class="modal-body">
 								<div class="container-fluid">
 									确定要删除该图片及所包含信息？删除后不可恢复！
 								</div>
 							</div>
 							<div class="modal-footer">
+									<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>drop_id传值
+								<form action="delete_img.php" method="post">
+									<input style="display:none;" name="data-drop_id" value="drop_id" class="drop_id"></input>
 								<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
 								<button type="button" class="btn btn-xs btn-danger">删除</button>
+								</form>
 							</div>
-						</form>
+						
 						</div>
 						<!-- /.modal-content -->
 					</div>
@@ -453,21 +472,33 @@
 						<tr>
 								<td>用户名</td>
 								<td>邮箱</td>
-								<td>捐助过的项目</td>
-								<td>发起的项目</td>
+								<td>电话</td>
+								<td>积分</td>
 								<td>操作</td>
 						</tr>
 						<tbody>
+							<?php
+								$sqlUser="select * from user";
+								$rstUser=mysql_query($sqlUser);
+								while($rowUser=mysql_fetch_assoc($rstUser))
+								{
+									$sqlCert="select myPhone from certification where user_id={$rowUser['id']}";
+									$rstCert=mysql_query($sqlCert);
+									$rowCert=mysql_fetch_assoc($rstCert);
+							?>
 							<tr>
-									<td>古月</td>
-									<td>81241003@qq.com</td>
-									<td>测试标题</td>
-									<td>测试标题</td>
+									<td><?php echo $rowUser['username'];?></td>
+									<td><?php echo $rowUser['email'];?></td>
+									<td><?php echo $rowCert['myPhone'];?></td>
+									<td><?php echo $rowUser['integration'];?></td>
 									<td>
 											<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#reviseUser">修改</button>
 											<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteUser">删除</button>
 									</td>
 							</tr>
+							<?php
+								}
+							?>
 							<tr>
 									<td>古月</td>
 									<td>81241003@qq.com</td>
