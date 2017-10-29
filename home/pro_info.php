@@ -124,7 +124,7 @@
         <a href="#" class="close">X</a>
       </div>
       <div class="order-body">
-        <p>项目名称：</p><span>一张团圆的车票</span>
+        <p>项目名称：</p><span><?php echo $row['name'];?></span>
         <form action="check_pro_info.php?class_id=<?php echo $class_id;?>" method="post">
           <label for="moneyNum">捐款金额：</label>
           <input type="number" min="0" max="1000000"  id="moneyNum" name="moneyNum">元  

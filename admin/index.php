@@ -1,6 +1,23 @@
 <?php
 	 include 'lock.php';
 	include '../public/commen/config.php';
+	 error_reporting(E_ALL||~E_NOTICE);
+	if($_POST['serche_user']){
+		$flag1=1;
+		$serche_user=$_POST['serche_user'];
+	}else{
+		$flag1=0;
+	}
+
+	if($_POST['serche_project']){
+		$flag2=2;
+		$serche_project=$_POST['serche_project'];
+	}else{
+		$flag2=0;
+	}
+	
+
+
 	$sql="select * from advert";
 	$rst=mysql_query($sql);
 ?>
@@ -35,6 +52,9 @@
 			$(".btn").click(function () {
 				$('.uid').attr("value",$(this).attr("uid"));
 				$('.drop_id').attr("value",$(this).attr("drop_id"));
+				$('.drop_project_id').attr("value",$(this).attr("drop_project_id"));
+				$('.look_user_id').attr("value",$(this).attr("look_user_id"));
+				$('.delete_user_id').attr("value",$(this).attr("delete_user_id"));
 			})
 		})
 	</script>
@@ -56,12 +76,27 @@
 				</p>
 			</div>
 			<div class="meun-title">账号管理</div>
+			<?php
+				if($flag1==1){
+			?>
+					<div class="meun-item" href="#sour" aria-controls="sour" role="tab" data-toggle="tab">
+						<img src="images/icon_source.png">项目管理</div>
+					<div class="meun-item meun-item-active" href="#user" aria-controls="user" role="tab" data-toggle="tab">
+						<img src="images/icon_chara_grey.png">用户管理</div>
+					<div class="meun-item" href="#img" aria-controls="img" role="tab" data-toggle="tab">
+						<img src="images/icon_img_grey.png">图片管理</div>
+			<?php
+				}else{
+			?>
 			<div class="meun-item meun-item-active" href="#sour" aria-controls="sour" role="tab" data-toggle="tab">
 				<img src="images/icon_source.png">项目管理</div>
 			<div class="meun-item" href="#user" aria-controls="user" role="tab" data-toggle="tab">
 				<img src="images/icon_chara_grey.png">用户管理</div>
 			<div class="meun-item" href="#img" aria-controls="img" role="tab" data-toggle="tab">
 				<img src="images/icon_img_grey.png">图片管理</div>
+			<?php
+				}
+			?>
 		</div>
 		<!-- 右侧具体内容栏目 -->
 		<div id="rightContent">
@@ -72,15 +107,33 @@
 			<!-- Tab panes -->
 			<div class="tab-content">
 				<!-- 项目管理模块 -->
-				<div role="tabpanel" class="tab-pane active" id="sour">
+				<div role="tabpanel" class="tab-pane <?php 
+						if($flag1!=1){
+							echo "active";
+						}
+					?>" id="sour">
 
 				<div class="check-div form-inline">
 					<div class="col-xs-3">
-							<button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addSource">添加项目</button>								
+							<?php 
+								if($flag2==2){
+							?>
+								
+										<form action="index.php" method="post">
+										<input type="hidden" name="serche_project" value="<?php echo $serche_user;?>">
+										<button class="btn btn-white btn-xs " type="submit">返回查询 </button>
+									</form>
+							<?php
+								}
+							?>								
 					</div>
 					<div class="col-xs-4">
-						<input type="text" class="form-control input-sm" placeholder="输入文字搜索">
-						<button class="btn btn-white btn-xs ">查 询 </button>
+						<form action="index.php" method="post">
+							<form action="index.php" method="post">
+							<input type="hidden" name="serche_project" value="<?php echo $serche_user;?>">
+							<input type="text" class="form-control input-sm" name="serche_project" placeholder="输入文字搜索">
+							<button class="btn btn-white btn-xs " type="submit">查 询 </button>
+						</form>
 					</div>
 				</div>
 				<div class="data-div">
@@ -95,17 +148,19 @@
 						</tr>
 						<tbody>
 							<?php
-								$sqlClass="select id,name,use_money,time_num,isend from giftclass where isend!=1";
-								$rstClass=mysql_query($sqlClass);
-								$i=1;
-								while($rowClass=mysql_fetch_assoc($rstClass))
-								{
+								if($flag2==2){
+									$sqlClass="select id,name,use_money,time_num,isend from giftclass where isend!=1 AND name LIKE '%$serche_project%'";
+									
+									$rstClass=mysql_query($sqlClass);
+									$i=1;
+									while($rowClass=mysql_fetch_assoc($rstClass))
+									{
 							?>
 							<tr>
 								<td><?php echo $i;?></td>
 								<td><?php echo $rowClass['name'];?></td>
-								<td><?php echo $rowClass['use_money'];?></td>
-								<td><?php echo $rowClass['time_num'];?></td>
+								<td><?php echo $rowClass['use_money'];?>元</td>
+								<td><?php echo $rowClass['time_num'];?>天</td>
 								<?php 
 									if($rowClass['isend']==0){
 										echo "<td>待审核</td>";
@@ -115,153 +170,61 @@
 									}
 								?>
 								<td>
-							>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>把按钮改成提交功能，让修改与删除按钮在一行上
-									<form action="Audit_project.php?class_id=<?php echo $rowClass['id'];?>">
-										<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>	
+
+									<form action="Audit_project.php" method="post">
+										<input style="display:none;" name="class_id" value="<?php echo $rowClass['id'];?>"></input>
+										<button type="submit" class="btn btn-success btn-xs">修改</button>	
 									</form>
-									<form action="delete_project.php?class_id=<?php echo $rowClass['id'];?>">
-										<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
-									</form>
-								<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+									
+										<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource" drop_project_id="<?php echo $rowClass['id'];?>">删除</button>
+								
+ 
 								</td>
 							</tr>
 							<?php
-								}
+									}
+								}else{
+									$sqlClass="select id,name,use_money,time_num,isend from giftclass where isend!=1";
+									$rstClass=mysql_query($sqlClass);
+									$i=1;
+									while($rowClass=mysql_fetch_assoc($rstClass))
+									{
 							?>
 							<tr>
-								<td>1</td>
-								<td>测试题目1</td>
-								<td>10000</td>
-								<td>30</td>
+								<td><?php echo $i;?></td>
+								<td><?php echo $rowClass['name'];?></td>
+								<td><?php echo $rowClass['use_money'];?>元</td>
+								<td><?php echo $rowClass['time_num'];?>天</td>
+								<?php 
+									if($rowClass['isend']==0){
+										echo "<td>待审核</td>";
+									}else{
+
+										echo "<td>未通过</td>";
+									}
+								?>
 								<td>
-									<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
-									<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
+
+									<form action="Audit_project.php" method="post">
+										<input style="display:none;" name="class_id" value="<?php echo $rowClass['id'];?>"></input>
+										<button type="submit" class="btn btn-success btn-xs">修改</button>	
+									</form>
+									
+										<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource" drop_project_id="<?php echo $rowClass['id'];?>">删除</button>
+								
+ 
 								</td>
 							</tr>
-							<tr>
-								<td>2</td>
-								<td>测试题目1</td>
-								<td>10000</td>
-								<td>30</td>
-								<td>
-									<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
-									<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
-								</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>测试题目1</td>
-								<td>10000</td>
-								<td>30</td>
-								<td>
-									<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeSource">修改</button>
-									<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource">删除</button>
-								</td>
-							</tr>
+							<?php
+									}
+								}
+							?>
+							
 						</tbody>
 					</table>
 				</div>				
-				<!--弹出窗口 添加资源-->
-				<div class="modal fade" id="addSource" role="dialog" aria-labelledby="gridSystemModalLabel">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								<h4 class="modal-title" id="gridSystemModalLabel">添加项目</h4>
-							</div>
-							<div class="modal-body">
-								<div class="container-fluid">
-									<form class="form-horizontal">
-										<div class="form-group ">
-											<label for="sName" class="col-xs-3 control-label">项目名称：</label>
-											<div class="col-xs-8 ">
-												<input type="email" class="form-control input-sm duiqi" id="sName" placeholder="">
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="sGold" class="col-xs-3 control-label">筹款目标：</label>
-											<div class="col-xs-8 ">
-												<input type="" class="form-control input-sm duiqi" id="sGold" placeholder="">
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="sTime" class="col-xs-3 control-label">计划天数：</label>
-											<div class="col-xs-8 ">
-												<input type="" class="form-control input-sm duiqi" id="sTime" placeholder="">
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="sReason" class="col-xs-3 control-label">筹款原因：</label>
-											<div class="col-xs-8">
-												<textarea type="" class="form-control input-sm duiqi" id="sReason" placeholder=""></textarea>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-xs btn-xs btn-white" data-dismiss="modal">取 消</button>
-								<button type="button" class="btn btn-xs btn-xs btn-green">保 存</button>
-							</div>
-						</div>
-						<!-- /.modal-content -->
-					</div>
-					<!-- /.modal-dialog -->
-				</div>
-				<!-- /.modal -->
-
-				<!--修改项目弹出窗口-->
-				<div class="modal fade" id="changeSource" role="dialog" aria-labelledby="gridSystemModalLabel">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-								<h4 class="modal-title" id="gridSystemModalLabel">修改项目</h4>
-							</div>
-							<div class="modal-body">
-								<div class="container-fluid">
-									<form class="form-horizontal">
-											<div class="form-group ">
-													<label for="sName" class="col-xs-3 control-label">项目名称：</label>
-													<div class="col-xs-8 ">
-														<input type="email" class="form-control input-sm duiqi" id="sName" placeholder="">
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="sGold" class="col-xs-3 control-label">筹款目标：</label>
-													<div class="col-xs-8 ">
-														<input type="" class="form-control input-sm duiqi" id="sGold" placeholder="">
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="sTime" class="col-xs-3 control-label">计划天数：</label>
-													<div class="col-xs-8 ">
-														<input type="" class="form-control input-sm duiqi" id="sTime" placeholder="">
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="sReason" class="col-xs-3 control-label">筹款原因：</label>
-													<div class="col-xs-8">
-														<textarea type="" class="form-control input-sm duiqi" id="sReason" placeholder=""></textarea>
-													</div>
-												</div>
-									</form>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-								<button type="button" class="btn btn-xs btn-green">保 存</button>
-							</div>
-						</div>
-						<!-- /.modal-content -->
-					</div>
-					<!-- /.modal-dialog -->
-				</div>
-				<!-- /.modal -->
+				
+				
 				<!--弹出删除项目警告窗口-->
 				<div class="modal fade" id="deleteSource" role="dialog" aria-labelledby="gridSystemModalLabel">
 					<div class="modal-dialog" role="document">
@@ -277,10 +240,13 @@
 									确定要删除该项目？删除后不可恢复！
 								</div>
 							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-								<button type="button" class="btn btn-xs btn-danger">保 存</button>
-							</div>
+							<form action="delete_project.php" method="post">
+								<div class="modal-footer">
+									<input style="display:none;" name="data-drop_project_id" value="drop_project_id" class="drop_project_id"></input>
+									<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
+									<button type="submit" class="btn btn-xs btn-danger">保 存</button>
+								</div>
+							</form>
 						</div>
 						<!-- /.modal-content -->
 					</div>
@@ -297,10 +263,16 @@
 				</div>
 				<div class="data-div">
 					<div class="row tableHeader">
-						<div class="col-xs-6 ">
+						<div class="col-xs-3 ">
 							图片
 						</div>
-						<div class="col-xs-6">
+						<div class="col-xs-3 ">
+							链接
+						</div>
+						<div class="col-xs-3 ">
+							名称
+						</div>
+						<div class="col-xs-3">
 							操作
 						</div>
 					</div>
@@ -311,10 +283,17 @@
 							
 						?>
 						<div class="row">
-							<div class="col-xs-6">
+							<div class="col-xs-3">
 								<img width="100" src="../public/uploads/<?php echo $row['img'];?>" alt="">
 							</div>
-							<div class="col-xs-6">
+							<div class="col-xs-3 ">
+								<?php echo $row['url'];?>
+							</div>
+							<div class="col-xs-3 ">
+								<?php echo $row['name'];?>
+							</div>
+							<div class="col-xs-3">
+
 								<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeChar" uid="<?php echo $row['id'];?>">修改</button>
 								<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteChar" drop_id="<?php echo $row['id'];?>">删除</button>
 							</div>
@@ -322,24 +301,7 @@
 						<?php
 							}
 						?>
-						<div class="row">
-							<div class="col-xs-6">
-								<img width="100" src="../home/img/img2.jpg" alt="">
-							</div>
-							<div class="col-xs-6">
-								<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeChar" uid="222">修改</button>
-								<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteChar">删除</button>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-xs-6">
-								<img width="100" src="../home/img/img3.jpg" alt="">
-							</div>
-							<div class="col-xs-6">
-								<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#changeChar" uid="333">修改</button>
-								<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteChar">删除</button>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 				<!--增加权限弹出窗口-->
@@ -354,20 +316,29 @@
 							</div>
 							<div class="modal-body">
 								<div class="container-fluid">
-									<form class="form-horizontal">
+										<form action="insert_img.php" method="post" enctype="multipart/form-data">
 										<div class="form-group ">
 											<label for="sName" class="col-xs-3 control-label">上传图片：</label>
+
 											<div class="col-xs-6 ">
-												<input type="file" id="sImg" placeholder="">
+												<input type="file" name="img">
 											</div>
 										</div>
-									</form>
-								</div>
+									
+									<div class="col-xs-6 ">
+											<input type="text" name="url" placeholder="URL">
+											</div>
+											<div class="col-xs-6 ">
+											<input type="text" name="name" placeholder="标题">
+											</div>
+									</div>
+									
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-								<button type="button" class="btn btn-xs btn-green">保 存</button>
+								<button type="submit" class="btn btn-xs btn-green">保 存</button>
 							</div>
+							</form>
 						</div>
 						<!-- /.modal-content -->
 					</div>
@@ -438,11 +409,11 @@
 								</div>
 							</div>
 							<div class="modal-footer">
-									<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>drop_id传值
+					
 								<form action="delete_img.php" method="post">
 									<input style="display:none;" name="data-drop_id" value="drop_id" class="drop_id"></input>
 								<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-								<button type="button" class="btn btn-xs btn-danger">删除</button>
+								<button type="submit" class="btn btn-xs btn-danger">删除</button>
 								</form>
 							</div>
 						
@@ -457,14 +428,30 @@
 			<!-- 图片管理结束 -->
 
 			<!--用户管理模块-->
-			<div role="tabpanel" class="tab-pane" id="user">
+			<div role="tabpanel" class="tab-pane <?php 
+						if($flag1==1){
+							echo "active";
+						}
+					?>" id="user">
 				<div class="check-div form-inline">
 					<div class="col-xs-3">
-						<button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUser">添加用户 </button>
+						<?php 
+								if($flag1==1){
+							?>
+									<form action="index.php" method="post">
+										<input type="hidden" name="serche_project" value="<?php echo $serche_project;?>">
+										<button class="btn btn-white btn-xs " type="submit">返回查询 </button>
+									</form>
+							<?php
+								}
+							?>	
 					</div>
 					<div class="col-xs-4">
-						<input type="text" class="form-control input-sm" placeholder="输入文字搜索">
-						<button class="btn btn-white btn-xs ">查 询 </button>
+						<form action="index.php" method="post">
+							<input type="hidden" name="serche_project" value="<?php echo $serche_project;?>">
+							<input type="text" class="form-control input-sm" name="serche_user" placeholder="输入文字搜索">
+							<button id="searchUser" class="btn btn-white btn-xs " type="submit">查 询 </button>
+						</form>
 					</div>
 				</div>
 				<div class="data-div">
@@ -478,13 +465,14 @@
 						</tr>
 						<tbody>
 							<?php
-								$sqlUser="select * from user";
-								$rstUser=mysql_query($sqlUser);
-								while($rowUser=mysql_fetch_assoc($rstUser))
-								{
-									$sqlCert="select myPhone from certification where user_id={$rowUser['id']}";
-									$rstCert=mysql_query($sqlCert);
-									$rowCert=mysql_fetch_assoc($rstCert);
+								if($flag1==1){
+									$sqlUser="select * from user where username LIKE '%$serche_user%'";
+									$rstUser=mysql_query($sqlUser);
+									while($rowUser=mysql_fetch_assoc($rstUser))
+									{
+										$sqlCert="select myPhone from certification where user_id={$rowUser['id']}";
+										$rstCert=mysql_query($sqlCert);
+										$rowCert=mysql_fetch_assoc($rstCert);
 							?>
 							<tr>
 									<td><?php echo $rowUser['username'];?></td>
@@ -492,53 +480,37 @@
 									<td><?php echo $rowCert['myPhone'];?></td>
 									<td><?php echo $rowUser['integration'];?></td>
 									<td>
-											<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#reviseUser">修改</button>
-											<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteUser">删除</button>
+											
+											<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteUser" delete_user_id=<?php echo $rowUser['id'];?>>删除</button>
 									</td>
 							</tr>
 							<?php
-								}
+									}
+
+								}else{
+									$sqlUser="select * from user";
+									$rstUser=mysql_query($sqlUser);
+									while($rowUser=mysql_fetch_assoc($rstUser))
+									{
+										$sqlCert="select myPhone from certification where user_id={$rowUser['id']}";
+										$rstCert=mysql_query($sqlCert);
+										$rowCert=mysql_fetch_assoc($rstCert);
 							?>
 							<tr>
-									<td>古月</td>
-									<td>81241003@qq.com</td>
-									<td>测试标题</td>
-									<td>测试标题</td>
+									<td><?php echo $rowUser['username'];?></td>
+									<td><?php echo $rowUser['email'];?></td>
+									<td><?php echo $rowCert['myPhone'];?></td>
+									<td><?php echo $rowUser['integration'];?></td>
 									<td>
-											<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#reviseUser">修改</button>
-											<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteUser">删除</button>
+											
+											<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteUser" delete_user_id=<?php echo $rowUser['id'];?>>删除</button>
 									</td>
 							</tr>
-							<tr>
-									<td>古月</td>
-									<td>81241003@qq.com</td>
-									<td>测试标题</td>
-									<td>测试标题</td>
-									<td>
-											<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#reviseUser">修改</button>
-											<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteUser">删除</button>
-									</td>
-							</tr>
-							<tr>
-									<td>古月</td>
-									<td>81241003@qq.com</td>
-									<td>测试标题</td>
-									<td>测试标题</td>
-									<td>
-											<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#reviseUser">修改</button>
-											<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteUser">删除</button>
-									</td>
-							</tr>
-							<tr>
-									<td>古月</td>
-									<td>81241003@qq.com</td>
-									<td>测试标题</td>
-									<td>测试标题</td>
-									<td>
-											<button class="btn btn-success btn-xs" data-toggle="modal" data-target="#reviseUser">修改</button>
-											<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteUser">删除</button>
-									</td>
-							</tr>
+							<?php
+									}
+								}
+							?>
+							
 						</tbody>
 					</table>
 						</div>
@@ -683,7 +655,10 @@
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
-								<button type="button" class="btn  btn-xs btn-danger">保 存</button>
+								<form action="delete_user.php" method="post">
+									<input style="display:none;" name="user_id" value="delete_user_id" class="delete_user_id"></input>
+									<button type="submit" class="btn  btn-xs btn-danger">删除</button>
+								</form>
 							</div>
 						</div>
 						<!-- /.modal-content -->

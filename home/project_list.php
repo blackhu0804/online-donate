@@ -31,7 +31,7 @@
   <div class="pro-main">
     <ul class="pro-ul">
       <?php
-            $sqlClass="select * from giftClass";
+            $sqlClass="select * from giftClass where is_end=0";
             $rstClass=mysql_query($sqlClass);
             while($rowClass=mysql_fetch_assoc($rstClass)){
 
@@ -53,21 +53,13 @@
         </div>
         <div class="pro-li-donate">
           
-          <?php if($rowClass['is_end'])
-              {
-                echo "<p class='pro-state'>状态：募款已结束</p>";
-              }else{
-        ?>
+      
 
                 <p class="pro-state">项目状态：募款中</p>
                 <p class="pro-donate-state">已筹：<span><?php echo $rowClass['use_money'];?></span>元&nbsp;&nbsp;<span><?php echo $rowClass['user_num'];?></span>人捐款</p>
               
                  <a href="./pro_info.php?class_id=<?php echo $rowClass['id'];?>" class="donate-btn">我要捐款</a>
-                
-      <?php
-             }
-      ?>
-         
+  
          
         </div>
       </li>

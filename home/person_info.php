@@ -83,10 +83,16 @@
 						<td><?php echo $rowclass['sum_money'];?></td>
 						<td><?php echo $rowclass['use_money'];?></td>
 						<?php
-							if($rowclass['is_end']){
-								echo "<td>已结束</td>";
+							if($rowclass['isend']==0){
+								echo "<td>待审核</td>";
+							}else if($rowclass['isend']==1){
+								if($rowclass['is_end']){
+									echo "<td>已结束</td>";
+								}else{
+									echo "<td>募款中</td>";
+								}
 							}else{
-								echo "<td>募款中</td>";
+								echo "<td>未通过</td>";
 							}
 						?>
 						

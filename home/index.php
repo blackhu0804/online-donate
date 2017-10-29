@@ -46,12 +46,12 @@
 			<div class="carousel">
 				<ul class="img-ct">
 					<?php
-						$sqlAdvert="select * from advert";
+						$sqlAdvert="select * from advert LIMIT 3";
 						$rstAdvert=mysql_query($sqlAdvert);
 						while ($rowAdvert=mysql_fetch_assoc($rstAdvert)) {
 							
 					?>
-					<li><a href="javascript:void(0)"><img src="./img/<?php echo $rowAdvert['img']?>" alt="<?php echo $rowAdvert['name']?>"></a></li>
+					<li><a href="<?php echo $rowAdvert['url']?>"><img src="../public/uploads/<?php echo $rowAdvert['img']?>" alt="<?php echo $rowAdvert['name']?>"></a></li>
 					<?php
 						}
 					?>
@@ -94,7 +94,7 @@
 					<?php
 						$i=0;
 						for(;$i<2;$i++){
-							while($time>$rowClass['time_num']&&$rowClass['id']){
+							while($time>$rowClass['end_time']&&$rowClass['id']){
 									$sqlclass="update giftClass set is_end=1 where id={$rowClass['id']}";
 									mysql_query($sqlclass);
 									$rowClass=mysql_fetch_assoc($rstClass);

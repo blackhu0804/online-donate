@@ -1,6 +1,6 @@
 <?php
-	include '../lock.php';
-	include '../../public/commen/config.php';
+	include 'lock.php';
+	include '../public/commen/config.php';
 
 	$id=$_POST['data-drop_id'];
 	$sql="select img from advert where id={$id}";

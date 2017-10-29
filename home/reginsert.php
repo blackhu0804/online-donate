@@ -33,8 +33,8 @@
 		  }
 		  $sql="select * from user where email='{$email}'";
 			$rst=mysql_query($sql);
-			$row=mysql_fetch_assoc($rst);
-			if($row){
+			
+			if($row=mysql_fetch_assoc($rst)){
 				echo "<script>alert('该邮箱已注册！')</script>";
 				echo "<script>location='sign_up.php'</script>";
 				exit();

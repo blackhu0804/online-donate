@@ -1,7 +1,7 @@
 <?php
   include 'lock.php';
   include '../public/commen/config.php';
-  $id=$_GET['class_id'];
+  $id=$_POST['class_id'];
   $sql="select * from giftclass where id={$id}";
   $rst=mysql_query($sql);
   $row=mysql_fetch_assoc($rst);
@@ -43,7 +43,7 @@
       $line=explode('。',$row['expl']);
       $img=explode(',', $row['img']);
       $line_len=count($line);
-      $img_len=count($img)-1;
+      $img_len=count($img);
       $mod=$line_len/$img_len;
       $i=1;
       $j=0;
