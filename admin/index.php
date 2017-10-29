@@ -72,7 +72,7 @@
 		<div class="leftMeun" id="leftMeun">
 			<div id="personInfor">
 				<p>
-          <a class="login-out" href="./login.html">退出登录</a>
+          <a class="login-out" href="./logout.php">退出登录</a>
 				</p>
 			</div>
 			<div class="meun-title">账号管理</div>
@@ -149,7 +149,7 @@
 						<tbody>
 							<?php
 								if($flag2==2){
-									$sqlClass="select id,name,use_money,time_num,isend from giftclass where isend!=1 AND name LIKE '%$serche_project%'";
+									$sqlClass="select id,name,use_money,time_num,isend from giftclass where name LIKE '%$serche_project%'";
 									
 									$rstClass=mysql_query($sqlClass);
 									$i=1;
@@ -164,9 +164,11 @@
 								<?php 
 									if($rowClass['isend']==0){
 										echo "<td>待审核</td>";
-									}else{
+									}else if($rowClass['isend']==2){
 
 										echo "<td>未通过</td>";
+									}else{
+										echo "<td>已通过</td>";
 									}
 								?>
 								<td>
@@ -182,7 +184,7 @@
 							<?php
 									}
 								}else{
-									$sqlClass="select id,name,use_money,time_num,isend from giftclass where isend!=1";
+									$sqlClass="select id,name,use_money,time_num,isend from giftclass";
 									$rstClass=mysql_query($sqlClass);
 									$i=1;
 									while($rowClass=mysql_fetch_assoc($rstClass))
@@ -196,9 +198,11 @@
 								<?php 
 									if($rowClass['isend']==0){
 										echo "<td>待审核</td>";
-									}else{
+									}else if($rowClass['isend']==2){
 
 										echo "<td>未通过</td>";
+									}else{
+										echo "<td>已通过</td>";
 									}
 								?>
 								<td>
