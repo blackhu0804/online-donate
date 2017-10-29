@@ -356,3 +356,20 @@ select {
 .login-out:hover {
 	opacity: .8;
 }
+.modify {
+	display: inline-block;
+}
+.uploadImg {
+	display: inline;
+	float: left;
+}
+.imgTitle {
+	margin-left: 5em;
+}
+.ImgUrl {
+	overflow:hidden;
+	text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
+	white-space:nowrap;
+	width:100%;
+}

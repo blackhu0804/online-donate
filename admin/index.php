@@ -171,14 +171,12 @@
 								?>
 								<td>
 
-									<form action="Audit_project.php" method="post">
+									<form class="modify" action="Audit_project.php" method="post">
 										<input style="display:none;" name="class_id" value="<?php echo $rowClass['id'];?>"></input>
 										<button type="submit" class="btn btn-success btn-xs">修改</button>	
 									</form>
-									
 										<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSource" drop_project_id="<?php echo $rowClass['id'];?>">删除</button>
 								
- 
 								</td>
 							</tr>
 							<?php
@@ -205,7 +203,7 @@
 								?>
 								<td>
 
-									<form action="Audit_project.php" method="post">
+									<form class="modify" action="Audit_project.php" method="post">
 										<input style="display:none;" name="class_id" value="<?php echo $rowClass['id'];?>"></input>
 										<button type="submit" class="btn btn-success btn-xs">修改</button>	
 									</form>
@@ -266,7 +264,7 @@
 						<div class="col-xs-3 ">
 							图片
 						</div>
-						<div class="col-xs-3 ">
+						<div class="ImgUrl" class="col-xs-3 ">
 							链接
 						</div>
 						<div class="col-xs-3 ">
@@ -317,22 +315,15 @@
 							<div class="modal-body">
 								<div class="container-fluid">
 										<form action="insert_img.php" method="post" enctype="multipart/form-data">
-										<div class="form-group ">
-											<label for="sName" class="col-xs-3 control-label">上传图片：</label>
-
-											<div class="col-xs-6 ">
-												<input type="file" name="img">
-											</div>
+											<div class="form-group ">
+												<label class="uploadImg" for="sName" class="col-xs-4 control-label">上传图片：</label>
+												<input id="sName" type="file" name="img">
+												<div>
+													<input type="text" name="url" placeholder="URL">
+													<input class="imgTitle" type="text" name="name" placeholder="标题">
+												</div>
 										</div>
-									
-									<div class="col-xs-6 ">
-											<input type="text" name="url" placeholder="URL">
-											</div>
-											<div class="col-xs-6 ">
-											<input type="text" name="name" placeholder="标题">
-											</div>
 									</div>
-									
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-xs btn-white" data-dismiss="modal">取 消</button>
