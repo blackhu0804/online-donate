@@ -72,7 +72,7 @@
 		<div class="leftMeun" id="leftMeun">
 			<div id="personInfor">
 				<p>
-          <a class="login-out" href="./login.html">退出登录</a>
+          <a class="login-out" href="./logout.php">退出登录</a>
 				</p>
 			</div>
 			<div class="meun-title">账号管理</div>
