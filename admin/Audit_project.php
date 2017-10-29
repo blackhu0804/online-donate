@@ -26,7 +26,7 @@
 <body>
   <div class="wrapper">
     <div class="header">
-      <h1><span>待审核项目基本信息</span><a href="#" class="back">返回</a></h1>
+      <h1><span>待审核项目基本信息</span><a href="index.php" class="back">返回</a></h1>
     </div>
     <div class="body">
       <div class="pro-body">

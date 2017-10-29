@@ -264,7 +264,7 @@
 						<div class="col-xs-3 ">
 							图片
 						</div>
-						<div class="ImgUrl" class="col-xs-3 ">
+						<div class="col-xs-3 ">
 							链接
 						</div>
 						<div class="col-xs-3 ">
@@ -285,7 +285,7 @@
 								<img width="100" src="../public/uploads/<?php echo $row['img'];?>" alt="">
 							</div>
 							<div class="col-xs-3 ">
-								<?php echo $row['url'];?>
+								<p class="ImgUrl"><?php echo $row['url'];?></p>
 							</div>
 							<div class="col-xs-3 ">
 								<?php echo $row['name'];?>
