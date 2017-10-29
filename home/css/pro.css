@@ -209,6 +209,14 @@
   color: black;
   display: none;
 }
+.jianjie {
+  display:inline-block;
+  width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .open {
   display: flex;
 }
