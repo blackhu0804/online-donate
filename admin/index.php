@@ -157,7 +157,7 @@
 									{
 							?>
 							<tr>
-								<td><?php echo $i;?></td>
+								<td><?php echo $i++;?></td>
 								<td><?php echo $rowClass['name'];?></td>
 								<td><?php echo $rowClass['use_money'];?>元</td>
 								<td><?php echo $rowClass['time_num'];?>天</td>
@@ -191,7 +191,7 @@
 									{
 							?>
 							<tr>
-								<td><?php echo $i;?></td>
+								<td><?php echo $i++;?></td>
 								<td><?php echo $rowClass['name'];?></td>
 								<td><?php echo $rowClass['use_money'];?>元</td>
 								<td><?php echo $rowClass['time_num'];?>天</td>
