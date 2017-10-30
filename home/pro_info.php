@@ -29,7 +29,7 @@
       <span><?php echo $row['name'];?></span>
     </p>
   </div>
-  <div class="pro-main clearfix">
+  <div class="pro-main clearfix" style="min-height: 55vh">
     <div class="pro-info-pic">
       <img src="../public/uploads/n_<?php $img=explode(',',$row['img']);echo $img[0]?>" alt="<?php echo $row['name'];?>">
     </div>
