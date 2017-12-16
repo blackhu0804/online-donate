@@ -16,7 +16,26 @@
 		$flag2=0;
 	}
 	
+	$perNumber=2; //每页显示的记录数
+	$page1=$_GET['page1']; //获得当前的页面值
+	$count1=mysql_query("select count(*) from giftClass"); //获得记录总数
+	$rs1=mysql_fetch_array($count1); 
+	$totalNumber1=$rs1[0];
+	$totalPage1=ceil($totalNumber1/$perNumber); //计算出总页数
+	if (!isset($page1)) {
+ 	$page1=1;
+	} //如果没有值,则赋值1
+	$startCount1=($page1-1)*$perNumber; //分页开始,根据此方法计算出开始的记录
 
+	$page2=$_GET['page2']; //获得当前的页面值
+	$count2=mysql_query("select count(*) from user"); //获得记录总数
+	$rs2=mysql_fetch_array($count2); 
+	$totalNumber2=$rs2[0];
+	$totalPage2=ceil($totalNumber2/$perNumber); //计算出总页数
+	if (!isset($page2)) {
+ 	$page2=2;
+	} //如果没有值,则赋值1
+	$startCount2=($page2-1)*$perNumber; //分页开始,根据此方法计算出开始的记录
 
 	$sql="select * from advert";
 	$rst=mysql_query($sql);
@@ -149,7 +168,8 @@
 						<tbody>
 							<?php
 								if($flag2==2){
-									$sqlClass="select id,name,use_money,time_num,isend from giftclass where name LIKE '%$serche_project%'";
+								
+									$sqlClass="select id,name,use_money,time_num,isend from giftclass where name LIKE '%$serche_project%' limit $startCount1,$perNumber";
 									
 									$rstClass=mysql_query($sqlClass);
 									$i=1;
@@ -157,7 +177,7 @@
 									{
 							?>
 							<tr>
-								<td><?php echo $i;?></td>
+								<td><?php echo $i++;?></td>
 								<td><?php echo $rowClass['name'];?></td>
 								<td><?php echo $rowClass['use_money'];?>元</td>
 								<td><?php echo $rowClass['time_num'];?>天</td>
@@ -183,15 +203,17 @@
 							</tr>
 							<?php
 									}
+									
+			
 								}else{
-									$sqlClass="select id,name,use_money,time_num,isend from giftclass";
+									$sqlClass="select id,name,use_money,time_num,isend from giftclass limit $startCount1,$perNumber";
 									$rstClass=mysql_query($sqlClass);
 									$i=1;
 									while($rowClass=mysql_fetch_assoc($rstClass))
 									{
 							?>
 							<tr>
-								<td><?php echo $i;?></td>
+								<td><?php echo $i++;?></td>
 								<td><?php echo $rowClass['name'];?></td>
 								<td><?php echo $rowClass['use_money'];?>元</td>
 								<td><?php echo $rowClass['time_num'];?>天</td>
@@ -219,11 +241,29 @@
 							</tr>
 							<?php
 									}
+									
 								}
 							?>
 							
 						</tbody>
 					</table>
+					<?php
+					if ($page1 != 1) { //页数不等于1
+							?>
+									<a href="index.php?page1=<?php echo $page1 - 1;?>">上一页</a> <!--显示上一页-->
+							<?php
+									}
+									for ($i=1;$i<=$totalPage1;$i++) {  //循环显示出页面
+							?>
+									<a href="index.php?page1=<?php echo $i;?>"><?php echo $i ;?></a>
+							<?php
+									}
+									if ($page1<$totalPage1) { //如果page小于总页数,显示下一页链接
+							?>
+									<a href="index.php?page1=<?php echo $page1 + 1;?>">下一页</a>
+							<?php
+									} 
+					?>
 				</div>				
 				
 				
@@ -515,30 +555,33 @@
 				<footer class="footer">
 					<ul class="pagination">
 						<li>
-							<select>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-								<option>6</option>
-								<option>7</option>
-								<option>8</option>
-								<option>9</option>
-								<option>10</option>
+							<select onchange="func()">
+								<?php
+								
+									for($j=1;$j<=$totalPage1;$j++){
+								?>
+								<option value="<?php echo $j?>"><?php echo $j?></option>
+	
+								<?php
+									}
+								?>
 							</select>
 							页
 						</li>
 						<li class="gray">
-							共20页
+							共<?php echo $totalPage1;?>页
 						</li>
 						<li>
+							<a href="index.php?page1=<?php echo $page1-1;?>">
 							<i class="glyphicon glyphicon-menu-left">
 							</i>
+						</a>
 						</li>
 						<li>
+							<a href="index.php?page1=<?php echo $page1+1;?>">
 							<i class="glyphicon glyphicon-menu-right">
 							</i>
+						</a>
 						</li>
 					</ul>
 				</footer>
