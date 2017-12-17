@@ -164,18 +164,38 @@
 .pro-body {
   margin-bottom: 30px;
 }
-.pro-body>h3 {
-  height: 42px;
-  font-size: 18px;
-  line-height: 42px;
-  padding-left: 20px;
-  margin: -1px 0 0 -1px;
-  background-color: #eee;
-  border: 1px solid #e7e7e7;
-  border-left: 4px solid #83a90d;
-  border-radius: 5px;
+.pro-body .header {
+  display: block;
+  clear: both;
 }
-.pro-body>h4 {
+.pro-body .header> li {
+  float: left;
+  padding: 9px 18px;
+  background-color: #d6d6d6;
+  color: #3d3d3d;
+  font-size: 16px;
+  cursor: pointer;
+  animation: .3s;
+}
+.pro-body .header> li:hover {
+  position: relative;
+  bottom: -1px;
+  padding: 4px 18px 10px;
+  border-top: 4px solid #41AC04;
+  background-color: #fff;
+  color: #3d3d3d;
+  text-decoration: none;
+}
+.pro-body .header> .active {
+  position: relative;
+  bottom: -1px;
+  padding: 4px 18px 10px;
+  border-top: 4px solid #41AC04;
+  background-color: #fff;
+  color: #3d3d3d;
+  text-decoration: none;
+}
+.pro-body h4 {
   font-size: 20px;
   background: url(../img/border-bottom.png) no-repeat left bottom;
   padding-bottom: 14px;
@@ -183,7 +203,7 @@
   padding-top: 40px;
   line-height: 1;
 }
-.pro-body>p{
+.pro-body p{
   font-size: 15px;
   color: #666;
   line-height: 1.8;
@@ -191,9 +211,31 @@
 .pro-body .pro-reason-body {
   text-indent: 2em;
 }
-.pro-body>img {
+.pro-body img {
   display: block;
   margin-left: 40px;
+}
+.pro-body .content .active {
+  display: block;
+}
+.pro-body .content li {
+  display: none;
+}
+.pro-body .content-row {
+  line-height: 1.8;
+  text-indent: 2em;
+}
+.pro-body .content-row img {
+  margin: 0 2em;
+} 
+.pro-body .content .bless-content {
+  text-indent: 2em;
+}
+.pro-body .bless-row {
+  padding-top: 1em;
+  padding-bottom: 1.5em;
+  width: 700px;
+  border-bottom: 1px solid #ccc;
 }
 .place-order-wrapper {
   position: fixed;
