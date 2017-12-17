@@ -68,6 +68,7 @@
 						<td>已捐金额(元)</td>
 						<td>目标金额(元)</td> 
 						<td>状态</td> 
+						<td>反馈信息</td>
 					</tr> 
 					<?php
 						$sqlclass="select * from giftClass where user_id={$_SESSION['home_userid']}";
@@ -95,6 +96,7 @@
 								echo "<td>未通过</td>";
 							}
 						?>
+						<td><a href="feedback.php?class_id=<?php echo $rowclass['id'];?>">增加反馈</a></td>
 						
 					</tr>
 					<?php

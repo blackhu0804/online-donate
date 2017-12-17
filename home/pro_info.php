@@ -90,7 +90,7 @@
               ?>
                 <br>
                 
-                <img  src="../public/uploads/n_<?php $img=explode(',',$row['img']);echo $img[$i]?>" alt="<?php echo $row['name'];?>">
+                <img  src="../public/uploads/n_<?php $img=explode(',',$row['img']);echo $img[$i]?>" alt="">
                 <br>
               
               <?php
@@ -127,73 +127,72 @@
         ?>
       </li>
       <li>
+        <?php
+          $sqlmarch="select * from giftmarch where giftClass_id='$class_id'";
+          $rstmarch=mysql_query($sqlmarch);
+          while($rowmarch=mysql_fetch_assoc($rstmarch)){
+            $img=explode(',', $rowmarch['img']); 
+            $img_len=count($img);
+        ?>
         <div class="feedback">
           <h4 class="pro-title">项目反馈</h4>
           <div class="content-row">
-            <p>反馈时间：<span>2017/12/17</span></p>
-            <img src="../home/img/1.jpg" alt="">
-            <div class="feedback-content">这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容</div>
+            <p>反馈时间：<span><?php echo date('Y-m-d',$rowmarch['time']);?></span></p>
+            <?php for($i=0;$i<=$img_len;$i++){?>
+            <img  src="../public/uploads/n_<?php echo $img[$i]?>" alt="">
+            <?php
+              }
+            ?>
+            <div class="feedback-content"><?php echo $rowmarch['content'];?></div>
           </div>
         </div>
-        <div class="feedback">
-          <h4 class="pro-title">项目反馈</h4>
-          <div class="content-row">
-            <p>反馈时间：<span>2017/12/17</span></p>
-            <img src="../home/img/1.jpg" alt="">
-            <div class="feedback-content">这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容</div>
-          </div>
-        </div>
+        <?php
+          }
+        ?>
+      
         
       </li>
       <li>
         <div class="bless">
           <h4 class="pro-title">来自捐助人的祝福</h4>
-          <div class="bless-row">
+          <?php
+            $sqlinfo="select content,user_id from giftinfo where giftClass_id='$class_id'";
+            $rstinfo=mysql_query($sqlinfo);
+            while ($rowinfo=mysql_fetch_assoc($rstinfo)) {
+              $id=$rowinfo['user_id'];
+            
+              $sqlemail="select email from user where id='$id'";
+           
+              $rstemail=mysql_query($sqlemail);
+              $rowemail=mysql_fetch_assoc($rstemail);
+              $emailinfo=$rowemail['email'];
+              ?>
+            <div class="bless-row">
             <p class="user-name">
-              xxx说：
+              <?php 
+              echo substr($emailinfo,0,5);
+              echo "***";
+              echo substr($emailinfo,9);
+              ?>祝福：
             </p>
             <p class="bless-content">
-              祝福你赶紧康复。
+              <?php
+                echo $rowinfo['content'];
+              ?>
             </p>
           </div>
-          <div class="bless-row">
-            <p class="user-name">
-              xxx说：
-            </p>
-            <p class="bless-content">
-              祝福你赶紧康复。
-            </p>
-          </div>
-          <div class="bless-row">
-            <p class="user-name">
-              xxx说：
-            </p>
-            <p class="bless-content">
-              祝福你赶紧康复。
-            </p>
-          </div>
-          <div class="bless-row">
-            <p class="user-name">
-              xxx说：
-            </p>
-            <p class="bless-content">
-              祝福你赶紧康复。
-            </p>
-          </div>
+              <?php
+            }
+          ?>
+         
+          
         </div>
       </li>
     </ul>
    
    
   </div>
-  <table>
-    <tr>
-      <td>123165</td>
-      <td>123165</td>
-      <td>123165</td>
-      <td>123165</td>
-    </tr>
-  </table>
+ 
 
   <div class="place-order-wrapper">
     <div class="place-order">

@@ -5,8 +5,8 @@
 	$class_id=$_GET['class_id'];
 	$time=time();
 	$user_id=$_SESSION['home_userid'];
-	
-	$sql="insert into giftInfo(giftClass_id,money,time,user_id) value('{$class_id}','{$moneyNum}','{$time}','{$user_id}')";
+	$content=$_POST['bless-content'];
+	$sql="insert into giftInfo(giftClass_id,money,time,user_id,content) value('{$class_id}','{$moneyNum}','{$time}','{$user_id}','{$content}')";
 	if(mysql_query($sql)){
 		$sqlUser="select integration from user where id={$user_id}";//查询爱心积分
 		$rstUser=mysql_query($sqlUser);
