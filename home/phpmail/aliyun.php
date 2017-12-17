@@ -19,7 +19,8 @@ for($i=0;$i<6;$i++)
 $_SESSION['pwd_code']=$captch_code;
 $_SESSION['toMail']=$toMail;
 
-$sql="select * from user where email='{$email}'";
+$sql="select * from user";
+
 $rst=mysql_query($sql);
 $row=mysql_fetch_assoc($rst);
 if(!($row)){
