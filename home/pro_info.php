@@ -116,6 +116,14 @@
    
    
   </div>
+  <table>
+    <tr>
+      <td>123165</td>
+      <td>123165</td>
+      <td>123165</td>
+      <td>123165</td>
+    </tr>
+  </table>
 
   <div class="place-order-wrapper">
     <div class="place-order">
