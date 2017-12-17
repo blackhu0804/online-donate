@@ -83,7 +83,7 @@
 						<a href="project_list.php" class="more">More</a>
 				</div>
 				<?php
-						$sqlClass="select * from giftclass where isend=1 and is_end=0";
+						$sqlClass="select * from giftclass where isend=1 and is_end=0 LIMIT 4";
 						$rstClass=mysql_query($sqlClass);
 						$time=time();
 						while ($rowClass=mysql_fetch_assoc($rstClass)) {
@@ -194,13 +194,6 @@
 	</div>
 
 	<div class="footer"  style="background:#eee;">
-		<p class="footer-desc">
-      <a href="/">关于我们</a>
-      |
-      <a href="/">加入我们</a>
-      |
-      <a href="/">联系我们</a>
-    </p>
     <p>&copy;<script>document.write('2016-' + new Date().getFullYear())</script> 微益捐版权所有</p>
 	</div>
 	

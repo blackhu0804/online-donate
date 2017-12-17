@@ -321,8 +321,6 @@
 					<div class="tablebody">
 						<?php
 							while($row=mysql_fetch_assoc($rst)){
-
-							
 						?>
 						<div class="row">
 							<div class="col-xs-3">

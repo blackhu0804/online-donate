@@ -29,7 +29,7 @@
       <span><?php echo $row['name'];?></span>
     </p>
   </div>
-  <div class="pro-main clearfix">
+  <div class="pro-main clearfix" style="min-height: 55vh">
     <div class="pro-info-pic">
       <img src="../public/uploads/n_<?php $img=explode(',',$row['img']);echo $img[0]?>" alt="<?php echo $row['name'];?>">
     </div>
@@ -62,57 +62,127 @@
   </div>
   
   <div class="pro-body">
-    <h3>项目基本信息</h3>
-    <h4 class="pro-title">项目名称</h4>
-    <p class="pro-title-body"><?php echo $row['name'];?></p>
-    <h4 class="pro-reason">项目概况</h4>
-    
-    <?php 
-      $line=explode('。',$row['expl']);
-      $img=explode(',', $row['img']);
-      $line_len=count($line);
-      $img_len=count($img)-1;
-      $mod=$line_len/$img_len;
-      $i=1;
-      $j=0;
-      foreach ($line as $k=>$lines){
-        if($j%$mod==0){
-          ?>
-            <br>
-            
-            <img  src="../public/uploads/n_<?php $img=explode(',',$row['img']);echo $img[$i]?>" alt="<?php echo $row['name'];?>">
-            <br>
-           
-          <?php
-          $i++;
-          if($j%5!=0)
-            echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-        }
-
-        if($j%5==0){
-          ?>
-          <p class="pro-reason-body">
-            
-          <?php
-        }
-        ?>
+    <!-- <h3>项目基本信息</h3> -->
+    <ul class="header  .clearfix">
+      <li class="active">项目基本信息</li>
+      <li>项目反馈信息</li>
+      <li>来自捐助人的祝福</li>
+    </ul>
+    <ul class="content">
+      <li class="active">
+        <h4 class="pro-title">项目名称</h4>
+        <p class="pro-title-body"><?php echo $row['name'];?></p>
+        <h4 class="pro-reason">项目概况</h4>
         
-        <?php
+        <?php 
+          $line=explode('。',$row['expl']);
+          $img=explode(',', $row['img']); 
+          
 
-        echo "{$line[$j]}。";
-        $j++;
-        ?>
-        <?php
-          if($j%5==0){
-          ?>
-          </p>
+          $line_len=count($line);
+          $img_len=count($img)-1;
+          $mod=$line_len/$img_len;
+        
+          $i=1;
+          $j=0;
+          foreach ($line as $k=>$lines){
+            if($j%$mod==0){
+              ?>
+                <br>
+                
+                <img  src="../public/uploads/n_<?php $img=explode(',',$row['img']);echo $img[$i]?>" alt="<?php echo $row['name'];?>">
+                <br>
+              
+              <?php
+              $i++;
+              if($j%5!=0)
+                echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+            }
+
+            if($j%5==0){
+              ?>
+              <p class="pro-reason-body">
+                
+              <?php
+            }
+            ?>
             
-          <?php
-        }
+            <?php
+          if($k==($line_len-1))
+          echo "{$line[$j]}";
+          else
+            echo "{$line[$j]}。";
+            $j++;
+            ?>
+            <?php
+              if($j%5==0){
+              ?>
+              </p>
+                
+              <?php
+            }
+            ?>
+            <?php
+          }
         ?>
-        <?php
-      }
-    ?>
+      </li>
+      <li>
+        <div class="feedback">
+          <h4 class="pro-title">项目反馈</h4>
+          <div class="content-row">
+            <p>反馈时间：<span>2017/12/17</span></p>
+            <img src="../home/img/1.jpg" alt="">
+            <div class="feedback-content">这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容</div>
+          </div>
+        </div>
+        <div class="feedback">
+          <h4 class="pro-title">项目反馈</h4>
+          <div class="content-row">
+            <p>反馈时间：<span>2017/12/17</span></p>
+            <img src="../home/img/1.jpg" alt="">
+            <div class="feedback-content">这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容</div>
+          </div>
+        </div>
+        
+      </li>
+      <li>
+        <div class="bless">
+          <h4 class="pro-title">来自捐助人的祝福</h4>
+          <div class="bless-row">
+            <p class="user-name">
+              xxx说：
+            </p>
+            <p class="bless-content">
+              祝福你赶紧康复。
+            </p>
+          </div>
+          <div class="bless-row">
+            <p class="user-name">
+              xxx说：
+            </p>
+            <p class="bless-content">
+              祝福你赶紧康复。
+            </p>
+          </div>
+          <div class="bless-row">
+            <p class="user-name">
+              xxx说：
+            </p>
+            <p class="bless-content">
+              祝福你赶紧康复。
+            </p>
+          </div>
+          <div class="bless-row">
+            <p class="user-name">
+              xxx说：
+            </p>
+            <p class="bless-content">
+              祝福你赶紧康复。
+            </p>
+          </div>
+        </div>
+      </li>
+    </ul>
    
    
   </div>
@@ -137,6 +207,8 @@
           <label for="moneyNum">捐款金额：</label>
           <input type="number" min="0" max="1000000"  id="moneyNum" name="moneyNum">元  
           <br>
+          <textarea name="bless-content" id="" cols="30" rows="3" placeholder="请输入你的祝福"></textarea>
+          <br>
           <button type="submit" class="sub-btn">捐助</button>
         </form>  
       </div>
@@ -159,6 +231,24 @@
     close.addEventListener('click',function(e) {
       e.preventDefault(); 
       placeOrder.classList.remove('open');
+    })
+
+
+    var tabs = document.querySelectorAll('.pro-body .header>li');
+    var panels =document.querySelectorAll('.pro-body .content>li');
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click',function() {
+          tabs.forEach(function(node) {
+              node.classList.remove('active');
+          })
+          this.classList.add('active');
+          var index = [].indexOf.call(tabs,this);
+          
+          panels.forEach(function(node) {
+              node.classList.remove('active');
+          })
+          panels[index].classList.add('active');
+      })
     })
   </script>
 </body>

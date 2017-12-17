@@ -43,8 +43,7 @@
         <div class="pro-li-info">
           <a href="./pro_info.php?class_id=<?php echo $rowClass['id'];?>"><h3><?php echo $rowClass['name'];?></h3></a>
           <span>项目简介：</span>
-          <b><?php echo $rowClass['summary'];?></b>
-          <br>
+          <b class="jianjie"><?php echo $rowClass['summary'];?></b>
           <span>筹款目标：</span>
           <b><?php echo $rowClass['use_money'];?></b>元
           <br>
@@ -56,7 +55,7 @@
       
 
                 <p class="pro-state">项目状态：募款中</p>
-                <p class="pro-donate-state">已筹：<span><?php echo $rowClass['use_money'];?></span>元&nbsp;&nbsp;<span><?php echo $rowClass['user_num'];?></span>人捐款</p>
+                <p class="pro-donate-state">已筹：<span><?php echo $rowClass['sum_money'];?></span>元&nbsp;&nbsp;<span><?php echo $rowClass['user_num'];?></span>人捐款</p>
               
                  <a href="./pro_info.php?class_id=<?php echo $rowClass['id'];?>" class="donate-btn">我要捐款</a>
   

@@ -17,7 +17,7 @@
       include "header.php";
   ?>
 
-  <div class="signUpMain">
+  <div class="signUpMain" style="min-height: 80vh">
     <div class="login-card">
       <div class="login-card-header">
         <h1>注册</h1>
