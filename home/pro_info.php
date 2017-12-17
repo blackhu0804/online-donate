@@ -130,6 +130,7 @@
         <?php
           $sqlmarch="select * from giftmarch where giftClass_id='$class_id'";
           $rstmarch=mysql_query($sqlmarch);
+          if( $rstmarch){
           while($rowmarch=mysql_fetch_assoc($rstmarch)){
             $img=explode(',', $rowmarch['img']); 
             $img_len=count($img);
@@ -150,16 +151,28 @@
         </div>
         <?php
           }
+        }else{
+
+          ?>
+          <h4>暂无项目反馈</h4>
+          <?php
+        }
         ?>
       
         
       </li>
       <li>
         <div class="bless">
-          <h4 class="pro-title">来自捐助人的祝福</h4>
           <?php
             $sqlinfo="select content,user_id from giftinfo where giftClass_id='$class_id'";
             $rstinfo=mysql_query($sqlinfo);
+            if($rstinfo){
+            ?>
+          <h4 class="pro-title">来自捐助人的祝福</h4>
+         
+          <?php
+
+        
             while ($rowinfo=mysql_fetch_assoc($rstinfo)) {
               $id=$rowinfo['user_id'];
             
@@ -185,6 +198,12 @@
           </div>
               <?php
             }
+
+        }else{
+          ?>
+          <h4 class="pro-title">暂无捐助人祝福</h4>
+          <?php
+        }
           ?>
          
           

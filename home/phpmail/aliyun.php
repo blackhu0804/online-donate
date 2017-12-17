@@ -19,15 +19,6 @@ for($i=0;$i<6;$i++)
 $_SESSION['pwd_code']=$captch_code;
 $_SESSION['toMail']=$toMail;
 
-$sql="select * from user";
-
-$rst=mysql_query($sql);
-$row=mysql_fetch_assoc($rst);
-if(!($row)){
-	echo "<script>alert('∏√” œ‰Œ¥◊¢≤·£°')</script>";
-	echo "<script>location='../forgot_pwd.php'</script>";
-	exit();
-}
 
 $mail             = new PHPMailer();
 
