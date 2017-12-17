@@ -554,19 +554,15 @@
 							共<?php echo $totalPage1;?>页
 						</li>
 						<li>
-							
+						<a href="index.php?page1=<?php echo $page1-1;?>" style="padding: 0px;">
 							<i class="glyphicon glyphicon-menu-left">
-								<a href="index.php?page1=<?php echo $page1-1;?>">前
-									</a>
 							</i>
-						
+						</a>
 						</li>
 						<li>
-							
-							<i class="glyphicon glyphicon-menu-right">
-								<a href="index.php?page1=<?php echo $page1+1;?>">后</a>
-							</i>
-						
+							<a href="index.php?page1=<?php echo $page1+1;?>"  style="padding: 0px;">
+								<i class="glyphicon glyphicon-menu-right"></i>
+							</a>
 						</li>
 					</ul>
 				</footer>

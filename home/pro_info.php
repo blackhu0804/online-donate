@@ -138,11 +138,13 @@
           <h4 class="pro-title">项目反馈</h4>
           <div class="content-row">
             <p>反馈时间：<span><?php echo date('Y-m-d',$rowmarch['time']);?></span></p>
-            <?php for($i=0;$i<=$img_len;$i++){?>
-            <img  src="../public/uploads/n_<?php echo $img[$i]?>" alt="">
-            <?php
-              }
-            ?>
+            <div class="content-img">
+            <?php for($i=0;$i<$img_len;$i++){?>
+              <img  src="../public/uploads/n_<?php echo $img[$i]?>" alt="">
+              <?php
+                }
+              ?>
+            </div>
             <div class="feedback-content"><?php echo $rowmarch['content'];?></div>
           </div>
         </div>

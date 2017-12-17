@@ -225,8 +225,14 @@
   line-height: 1.8;
   text-indent: 2em;
 }
+.pro-body .content-img {
+  margin-left: 2em;
+  display: flex;
+}
 .pro-body .content-row img {
-  margin: 0 2em;
+  width: 150px;
+  height: 150px;
+  margin: 0 .5em;
 } 
 .pro-body .content .bless-content {
   text-indent: 2em;
