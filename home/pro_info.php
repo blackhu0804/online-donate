@@ -135,6 +135,15 @@
             <div class="feedback-content">这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容</div>
           </div>
         </div>
+        <div class="feedback">
+          <h4 class="pro-title">项目反馈</h4>
+          <div class="content-row">
+            <p>反馈时间：<span>2017/12/17</span></p>
+            <img src="../home/img/1.jpg" alt="">
+            <div class="feedback-content">这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容这是反馈内容</div>
+          </div>
+        </div>
+        
       </li>
       <li>
         <div class="bless">
@@ -189,6 +198,8 @@
         <form action="check_pro_info.php?class_id=<?php echo $class_id;?>" method="post">
           <label for="moneyNum">捐款金额：</label>
           <input type="number" min="0" max="1000000"  id="moneyNum" name="moneyNum">元  
+          <br>
+          <textarea name="bless-content" id="" cols="30" rows="3" placeholder="请输入你的祝福"></textarea>
           <br>
           <button type="submit" class="sub-btn">捐助</button>
         </form>  
