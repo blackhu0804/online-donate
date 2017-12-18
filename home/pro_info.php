@@ -236,7 +236,7 @@
 
 
     var tabs = document.querySelectorAll('.pro-body .header>li');
-    var panels =document.querySelectorAll('.pro-body .content>li');
+    var panels = document.querySelectorAll('.pro-body .content>li');
       tabs.forEach(function(tab) {
         tab.addEventListener('click',function() {
           tabs.forEach(function(node) {
