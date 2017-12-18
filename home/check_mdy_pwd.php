@@ -12,6 +12,12 @@
 			$sql="update user set password='{$newPwd}' where email='{$email}'";
 
 			if(mysql_query($sql)){
+				$sqluser="select * from user where email='{$email}'";
+				$rst=mysql_query($sqluser);
+				$row=mysql_fetch_assoc($rst);
+
+				$_SESSION['home_username']=$row['username'];
+				$_SESSION['home_userid']=$row['id'];
 				echo '<script>location="index.php"</script>';
 			}
 			else
